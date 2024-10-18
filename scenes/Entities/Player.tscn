@@ -151,7 +151,7 @@ script = ExtResource("1_yynkk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dc8vq")
-animation = &"idle"
+animation = &"dashing"
 autoplay = "idle"
 offset = Vector2(5, 0)
 
