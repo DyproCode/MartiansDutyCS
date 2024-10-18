@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://0gchqfc7p2b0"]
+
+[ext_resource type="Script" path="res://scripts/GUIComponents/start_screen.cs" id="1_b42i6"]
+[ext_resource type="Texture2D" uid="uid://dol4ufu5gusny" path="res://assets/sprites/Backgrounds/landing_page.png" id="2_48rkj"]
+[ext_resource type="Theme" uid="uid://ci8fsy53p4m4p" path="res://themes/title_theme.tres" id="3_vrfhl"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b42i6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_48rkj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_top = 225
+theme_override_constants/margin_right = 225
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="StartBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vrfhl")
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="OptionsBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vrfhl")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
+[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vrfhl")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

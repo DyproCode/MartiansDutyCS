@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b5oxyngm4g174"]
+
+[ext_resource type="FontFile" uid="uid://ny3lh3xl407s" path="res://assets/fonts/upheavtt.ttf" id="1_26y26"]
+[ext_resource type="Texture2D" uid="uid://0xp14x3bc3vr" path="res://assets/sprites/GUI/pausemenu_lines.png" id="1_e21yw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7i8me"]
+texture = ExtResource("1_e21yw")
+
+[resource]
+default_font = ExtResource("1_26y26")
+Button/colors/font_color = Color(0.6, 0.898039, 0.313726, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_7i8me")
