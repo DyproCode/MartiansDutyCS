@@ -1,24 +1,31 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using MartiansDutyCS.scripts.Effects;
+using MartiansDutyCS.scripts.Entities;
 using MartiansDutyCS.scripts.Systems;
 
-public partial class Gremloid : CharacterBody2D
+public partial class Gremloid : BaseEnemy
 {
     //Health
     public static int MaxHealth = 5;
     public static float Speed = 150;
     public static int MoneyDrop = 5;
     
-    //Godot Components 
-    private AnimatedSprite2D _sprite;
-    private HealthComponent _healthComponent;
-    
     public override void _Ready()
     {
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
         _healthComponent.Initialize(MaxHealth);
+        
+        Triggers.Add(
+            new Trigger(TriggerType.Die,
+                new List<IEffect>
+                {
+                    new EffectIncreasePlayerMoney(MoneyDrop)
+                }
+            ));
     }
 
     public override void _Process(double delta)
@@ -26,7 +33,23 @@ public partial class Gremloid : CharacterBody2D
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         _sprite.LookAt(player.GlobalPosition);
         Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+        SetAnimation();
         MoveAndSlide();
     }
     
+    private void SetAnimation()
+    {
+        if (_healthComponent.CurrentHealth <= _healthComponent.MaxHealth * 0.5)
+        {
+            _sprite.Animation = "walking_dying";
+        }
+        else if (_healthComponent.CurrentHealth < _healthComponent.MaxHealth)
+        {
+            _sprite.Animation = "walking_hurt";
+        }
+        else
+        {
+            _sprite.Animation = "walking_full";
+        }
+    }
 }

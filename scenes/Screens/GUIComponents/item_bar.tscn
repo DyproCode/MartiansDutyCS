@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbtqolthrd08f"]
+
+[ext_resource type="PackedScene" uid="uid://d4krvokfv1kik" path="res://scenes/Screens/GUIComponents/item_ui.tscn" id="1_8ni4d"]
+
+[node name="ItemBar" type="Control"]
+custom_minimum_size = Vector2(426, 20)
+layout_mode = 3
+anchor_right = 0.666
+anchor_bottom = 0.056
+offset_right = -0.23999
+offset_bottom = -0.16
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(426, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.686275, 0.686275, 0.686275, 0.490196)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(426, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemUI" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI2" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI3" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI4" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI5" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI6" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI7" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI8" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI9" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI10" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI11" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2
+
+[node name="ItemUI12" parent="HBoxContainer" instance=ExtResource("1_8ni4d")]
+layout_mode = 2

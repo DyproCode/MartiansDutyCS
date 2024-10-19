@@ -1,11 +1,13 @@
-﻿namespace MartiansDutyCS.scripts.Systems;
+﻿using Godot;
 
-public class GameManager
+namespace MartiansDutyCS.scripts.Systems;
+
+public partial class GameManager : Node
 {
-    private GameManager _gameManager = null;
+    private static GameManager _gameManager = null;
     private GameManager() { }
 
-    public GameManager GetInstance()
+    public static GameManager GetInstance()
     {
         if (_gameManager == null)
         {

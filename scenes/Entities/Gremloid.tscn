@@ -1,8 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddjnd5x5j7jml"]
+[gd_scene load_steps=20 format=3 uid="uid://ddjnd5x5j7jml"]
 
-[ext_resource type="Texture2D" uid="uid://c87y04um0ad3r" path="res://assets/sprites/Characters/goblin_walk_Sheet.png" id="1_l6ora"]
+[ext_resource type="Texture2D" uid="uid://c87y04um0ad3r" path="res://assets/sprites/Characters/basic_goblin/goblin_walk_Sheet.png" id="1_l6ora"]
 [ext_resource type="Script" path="res://scripts/Entities/Gremloid.cs" id="1_o8777"]
+[ext_resource type="Texture2D" uid="uid://des4cahgiakjl" path="res://assets/sprites/Characters/basic_goblin/goblin_near_death.png" id="2_n7k7j"]
 [ext_resource type="PackedScene" uid="uid://birdovgkcsswa" path="res://scenes/Entities/Components/health_component.tscn" id="3_ddpbe"]
+[ext_resource type="Texture2D" uid="uid://cu4d8pdu08fhw" path="res://assets/sprites/Characters/basic_goblin/goblin_hurt.png" id="4_djrrd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ros3n"]
+atlas = ExtResource("2_n7k7j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vduvb"]
+atlas = ExtResource("2_n7k7j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctkg2"]
+atlas = ExtResource("2_n7k7j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub3ye"]
+atlas = ExtResource("2_n7k7j")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_565ki"]
 atlas = ExtResource("1_l6ora")
@@ -20,8 +38,41 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_l6ora")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tu2e"]
+atlas = ExtResource("4_djrrd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0mx6"]
+atlas = ExtResource("4_djrrd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ht55"]
+atlas = ExtResource("4_djrrd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij6lh"]
+atlas = ExtResource("4_djrrd")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dvuaw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ros3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vduvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctkg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub3ye")
+}],
+"loop": true,
+"name": &"walking_dying",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_565ki")
@@ -36,7 +87,24 @@ animations = [{
 "texture": SubResource("AtlasTexture_k5y2j")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"walking_full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tu2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0mx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ht55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij6lh")
+}],
+"loop": true,
+"name": &"walking_hurt",
 "speed": 5.0
 }]
 
@@ -49,7 +117,8 @@ script = ExtResource("1_o8777")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 1)
 sprite_frames = SubResource("SpriteFrames_dvuaw")
-animation = &"walking"
+animation = &"walking_dying"
+autoplay = "walking_full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

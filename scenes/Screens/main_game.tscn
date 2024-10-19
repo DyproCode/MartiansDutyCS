@@ -164,11 +164,10 @@ pattern_2 = SubResource("TileMapPattern_c6145")
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5y2ot")]
-position = Vector2(-649, -4)
+position = Vector2(377, 223)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -1)
-zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 
 [node name="UI" parent="." instance=ExtResource("1_evqab")]

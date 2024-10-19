@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4krvokfv1kik"]
+
+[ext_resource type="Texture2D" uid="uid://xmcr1vq87osx" path="res://assets/sprites/Item Icons/MD_GalaxyHourglass.png" id="1_go5la"]
+
+[node name="ItemUI" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchor_right = 0.025
+anchor_bottom = 0.038
+offset_bottom = 2.32
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_go5la")
+expand_mode = 1
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.687
+anchor_top = 0.437
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.00799942
+offset_top = -1.992
+offset_right = 5.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(0, 0.878431, 0.533333, 1)
+theme_override_font_sizes/font_size = 10
+text = "2
+"

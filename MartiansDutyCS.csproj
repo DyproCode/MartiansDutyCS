@@ -8,7 +8,4 @@
   <ItemGroup>
     <Compile Remove="scripts\GameManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="scripts\Entities\" />
-  </ItemGroup>
 </Project>
