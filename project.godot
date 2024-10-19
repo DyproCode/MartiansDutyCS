@@ -27,6 +27,11 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="MartiansDutyCS"
 
+[global_group]
+
+Player=""
+Enemy=""
+
 [input]
 
 UP={

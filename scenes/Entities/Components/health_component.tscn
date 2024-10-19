@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://birdovgkcsswa"]
+
+[ext_resource type="Script" path="res://scripts/Entities/Components/HealthComponent.cs" id="1_eq3hg"]
+[ext_resource type="PackedScene" uid="uid://1uvl32hnjnnx" path="res://scenes/Entities/Components/health_bar.tscn" id="2_6v5ma"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_eq3hg")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_6v5ma")]
+custom_minimum_size = Vector2(25, 5)
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 25.0
+metadata/_edit_use_anchors_ = true

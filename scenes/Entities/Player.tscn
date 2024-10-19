@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://cyre77ux36jsf"]
 
-[ext_resource type="Script" path="res://scripts/Entities/Player.cs" id="1_yynkk"]
+[ext_resource type="Script" path="res://scripts/Entities/PlayerScene.cs" id="1_ss81b"]
 [ext_resource type="PackedScene" uid="uid://1uvl32hnjnnx" path="res://scenes/Entities/Components/health_bar.tscn" id="2_2ycl4"]
 [ext_resource type="Texture2D" uid="uid://bham8e40vkrvu" path="res://assets/sprites/Characters/main_character_idle..png" id="2_cwp4o"]
 [ext_resource type="Texture2D" uid="uid://bj1e7rrgfmbub" path="res://assets/sprites/Characters/main_character_roll.png" id="2_e6slu"]
@@ -146,8 +146,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ty8ak"]
 radius = 8.06226
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_yynkk")
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_ss81b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dc8vq")
@@ -156,6 +156,7 @@ autoplay = "idle"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_ty8ak")
 
 [node name="FireRate" type="Timer" parent="."]
@@ -163,17 +164,17 @@ wait_time = 0.35
 one_shot = true
 
 [node name="FireMarker" type="Marker2D" parent="."]
-position = Vector2(19, 5)
+position = Vector2(13, 5)
 
 [node name="RollTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("2_2ycl4")]
-offset_left = -10.0
+offset_left = -13.0
 offset_top = -15.0
-offset_right = 13.0
-offset_bottom = -11.0
+offset_right = 12.0
+offset_bottom = -10.0
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]

@@ -35,11 +35,17 @@ public partial class bullet : Area2D
     {
         if (body.GetGroups().Count(g => g == _target_group) > 0)
         {
-            QueueFree();
             if (body.HasMethod("TakeDamage"))
             {
                 body.Call("TakeDamage", _damage);
             }
+           
+            if (body.FindChild("HealthComponent") != null)
+            {
+                body.FindChild("HealthComponent").Call("TakeDamage", _damage);
+            }
         }
+        
+        QueueFree();
     }
 }

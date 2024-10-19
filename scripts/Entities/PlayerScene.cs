@@ -2,22 +2,11 @@ using Godot;
 using System;
 using MartiansDutyCS.scripts.Systems;
 
-public partial class Player : CharacterBody2D
+public partial class PlayerScene : CharacterBody2D
 {
     //Movement
     private string _state = "walking";
-    private float _speed = 150;
     private bool _canShoot = true;
-    
-    //Combat
-    private int _damage = 1;
-    
-    //Health
-    private int _maxHealth = 5;
-    private int _currentHealth;
-    
-    //Resources
-    private int _money;
     
     //Dash
     private const int DASH_TIME = 10;
@@ -45,9 +34,8 @@ public partial class Player : CharacterBody2D
         _rollTimer = GetNode<Timer>("RollTimer");
         _fireMarker = GetNode<Marker2D>("FireMarker");
         _healthBar = GetNode<health_bar>("HealthBar");
-
-        _currentHealth = _maxHealth; 
-        _healthBar.InitializeHealthBar(_maxHealth);
+        
+        _healthBar.InitializeHealthBar(Player.GetInstance().MaxHealth);
     }
 
     public override void _Process(double delta)
@@ -72,7 +60,7 @@ public partial class Player : CharacterBody2D
         if (_state != "dashing")
         {
             var dir = Input.GetVector("LEFT", "RIGHT", "UP", "DOWN");
-            Velocity = dir * _speed;
+            Velocity = dir * Player.GetInstance().Speed;
         }
 
         if (_state == "dashing")
@@ -116,7 +104,7 @@ public partial class Player : CharacterBody2D
             var bulletInstance = _bulletPackedScene.Instantiate();
             var newBullet = bulletInstance as bullet;
             
-            newBullet.Initialize("Enemy", _damage, _sprite.Rotation, _fireMarker.GlobalPosition);
+            newBullet.Initialize("Enemy", Player.GetInstance().Damage, _sprite.Rotation, _fireMarker.GlobalPosition);
             
             GetTree().Root.GetNode("MainGame").AddChild(newBullet);
             _canShoot = false;
@@ -126,8 +114,8 @@ public partial class Player : CharacterBody2D
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-        if (_currentHealth <= 0)
+        Player.GetInstance().CurrentHealth -= damage;
+        if (Player.GetInstance().CurrentHealth <= 0)
         {
             GetTree().Quit();
         }

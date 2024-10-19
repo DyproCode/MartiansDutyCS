@@ -1,13 +1,18 @@
 using Godot;
 using System;
+using MartiansDutyCS.scripts.Systems;
 
 public partial class ui : CanvasLayer
 {
-    private Control _pause_menu;
+    private Control _pauseMenu;
+    private Label _moneyValueLabel;
+    private bool _isReady = false;
 
     public override void _Ready()
     {
-        _pause_menu = GetNode<Control>("PauseMenu");
+        _pauseMenu = GetNode<Control>("PauseMenu");
+        _moneyValueLabel = GetNode<Label>("MoneyHBox/MoneyValueLabel");
+        _isReady = true;
     }
 
     public override void _Process(double delta)
@@ -16,14 +21,15 @@ public partial class ui : CanvasLayer
         {
             if (GetTree().Paused)
             {
-                _pause_menu.Hide();
+                _pauseMenu.Hide();
                 GetTree().Paused = false;
             }
             else
             {
-                _pause_menu.Show();   
+                _pauseMenu.Show();   
                 GetTree().Paused = true;    
             }
         }
+        _moneyValueLabel.Text = Player.GetInstance().Money.ToString();
     }
 }

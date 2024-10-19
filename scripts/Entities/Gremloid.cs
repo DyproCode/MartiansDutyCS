@@ -1,34 +1,32 @@
 using Godot;
 using System;
+using System.Linq;
+using MartiansDutyCS.scripts.Systems;
 
 public partial class Gremloid : CharacterBody2D
 {
     //Health
-    public static int MaxHealth;
-    private int _currentHealth;
+    public static int MaxHealth = 5;
+    public static float Speed = 150;
+    public static int MoneyDrop = 5;
     
     //Godot Components 
-    private health_bar _healthBar;
     private AnimatedSprite2D _sprite;
+    private HealthComponent _healthComponent;
     
     public override void _Ready()
     {
-        _healthBar = GetNode<health_bar>("HealthBar");
-        _healthBar.InitializeHealthBar(MaxHealth);    
+        _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _healthComponent = GetNode<HealthComponent>("HealthComponent");
+        _healthComponent.Initialize(MaxHealth);
     }
 
     public override void _Process(double delta)
     {
-        base._Process(delta);
+        var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
+        _sprite.LookAt(player.GlobalPosition);
+        Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+        MoveAndSlide();
     }
-
-    public void TakeDamage(int damage)
-    {
-        _currentHealth -= damage;
-        _healthBar.SetHealth(_currentHealth);
-        if (_currentHealth <= 0)
-        {
-            GetTree().Quit();
-        }
-    }
+    
 }

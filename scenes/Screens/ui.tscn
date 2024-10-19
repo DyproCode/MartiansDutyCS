@@ -20,3 +20,19 @@ offset_right = 90.0
 offset_bottom = 137.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MoneyHBox" type="HBoxContainer" parent="."]
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 101.0
+offset_bottom = 45.0
+theme_override_constants/separation = -1
+
+[node name="MoneyTextLabel" type="Label" parent="MoneyHBox"]
+layout_mode = 2
+text = "Money: $"
+
+[node name="MoneyValueLabel" type="Label" parent="MoneyHBox"]
+layout_mode = 2
+text = "NAN
+"
