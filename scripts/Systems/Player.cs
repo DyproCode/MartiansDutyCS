@@ -10,7 +10,11 @@ public class Player
     public int CurrentHealth;
     
     private static Player _player = null;
-    private Player() {}
+
+    private Player()
+    {
+        CurrentHealth = MaxHealth;
+    }
 
     public static Player GetInstance()
     {
@@ -21,10 +25,4 @@ public class Player
 
         return _player;
     }
-
-    public void TakeDamage(int damage)
-    {
-        this.CurrentHealth -= damage;
-    }
-    
 }

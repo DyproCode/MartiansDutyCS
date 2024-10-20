@@ -10,8 +10,6 @@ public partial class BaseEnemy : CharacterBody2D
     protected HealthComponent _healthComponent;
     public List<Trigger> Triggers = new List<Trigger>();
     public int Damage = 0;
+    public string State = "walking";
 
-    public override void _ExitTree()
-    {
-    }
 }

@@ -33,24 +33,34 @@ public partial class Gremloid : BaseEnemy
     {
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         _sprite.LookAt(player.GlobalPosition);
-        Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+        if (State == "walking")
+        {
+            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+        }
         SetAnimation();
         MoveAndSlide();
     }
     
     private void SetAnimation()
     {
-        if (_healthComponent.CurrentHealth <= _healthComponent.MaxHealth * 0.5)
+        if (State == "walking")
         {
-            _sprite.Animation = "walking_dying";
+            if (_healthComponent.CurrentHealth <= _healthComponent.MaxHealth * 0.5)
+            {
+                _sprite.Animation = "walking_dying";
+            }
+            else if (_healthComponent.CurrentHealth < _healthComponent.MaxHealth)
+            {
+                _sprite.Animation = "walking_hurt";
+            }
+            else
+            {
+                _sprite.Animation = "walking_full";
+            }
         }
-        else if (_healthComponent.CurrentHealth < _healthComponent.MaxHealth)
+        else if (State == "attacking")
         {
-            _sprite.Animation = "walking_hurt";
-        }
-        else
-        {
-            _sprite.Animation = "walking_full";
+            _sprite.Animation = "attacking";
         }
     }
 }

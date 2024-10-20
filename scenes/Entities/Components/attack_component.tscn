@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/Entities/Components/AttackComponent.cs" id="1_ifxhn"]
 
-[node name="AttackComponent" type="Node"]
+[node name="AttackComponent" type="Node2D"]
 script = ExtResource("1_ifxhn")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(10, 0)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
