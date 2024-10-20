@@ -114,7 +114,7 @@ public partial class PlayerScene : CharacterBody2D
 
 	public void TakeDamage(int damage)
 	{
-		Player.GetInstance().CurrentHealth -= damage;
+		Player.GetInstance().TakeDamage(damage);
 		if (Player.GetInstance().CurrentHealth <= 0)
 		{
 			GetTree().Quit();

@@ -15,6 +15,7 @@ public partial class Gremloid : BaseEnemy
     
     public override void _Ready()
     {
+        this.Damage = 1;
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
         _healthComponent.Initialize(MaxHealth);

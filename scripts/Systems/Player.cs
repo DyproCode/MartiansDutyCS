@@ -21,5 +21,10 @@ public class Player
 
         return _player;
     }
+
+    public void TakeDamage(int damage)
+    {
+        this.CurrentHealth -= damage;
+    }
     
 }

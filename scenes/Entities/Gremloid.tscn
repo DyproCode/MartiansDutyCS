@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddjnd5x5j7jml"]
+[gd_scene load_steps=21 format=3 uid="uid://ddjnd5x5j7jml"]
 
 [ext_resource type="Texture2D" uid="uid://c87y04um0ad3r" path="res://assets/sprites/Characters/basic_goblin/goblin_walk_Sheet.png" id="1_l6ora"]
 [ext_resource type="Script" path="res://scripts/Entities/Gremloid.cs" id="1_o8777"]
 [ext_resource type="Texture2D" uid="uid://des4cahgiakjl" path="res://assets/sprites/Characters/basic_goblin/goblin_near_death.png" id="2_n7k7j"]
 [ext_resource type="PackedScene" uid="uid://birdovgkcsswa" path="res://scenes/Entities/Components/health_component.tscn" id="3_ddpbe"]
 [ext_resource type="Texture2D" uid="uid://cu4d8pdu08fhw" path="res://assets/sprites/Characters/basic_goblin/goblin_hurt.png" id="4_djrrd"]
+[ext_resource type="PackedScene" uid="uid://cokhslsnvn4kc" path="res://scenes/Entities/Components/attack_component.tscn" id="6_ekaoa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ros3n"]
 atlas = ExtResource("2_n7k7j")
@@ -126,3 +127,5 @@ shape = SubResource("CircleShape2D_w1k18")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ddpbe")]
 position = Vector2(-12, -18)
+
+[node name="AttackComponent" parent="." instance=ExtResource("6_ekaoa")]

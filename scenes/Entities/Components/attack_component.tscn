@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cokhslsnvn4kc"]
+
+[ext_resource type="Script" path="res://scripts/Entities/Components/AttackComponent.cs" id="1_ifxhn"]
+
+[node name="AttackComponent" type="Node"]
+script = ExtResource("1_ifxhn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
