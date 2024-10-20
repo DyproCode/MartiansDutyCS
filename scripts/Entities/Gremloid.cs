@@ -35,7 +35,10 @@ public partial class Gremloid : BaseEnemy
         _sprite.LookAt(player.GlobalPosition);
         if (State == "walking")
         {
-            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+            if (this.GlobalPosition.DistanceTo(player.GlobalPosition) > 5)
+            {
+                Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+            }
         }
         SetAnimation();
         MoveAndSlide();

@@ -18,7 +18,7 @@ public partial class AttackComponent : Node
         _attackTimer = GetNode<Timer>("AttackTimer");
         
         _target = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
-        _attackTimer.SetWaitTime(0.5);
+        _attackTimer.SetWaitTime(1);
     }
 
     public override void _Process(double delta)

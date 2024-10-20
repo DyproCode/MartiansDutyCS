@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://scripts/Entities/Projectiles/bullet.cs" id="1_d6xqk"]
 [ext_resource type="Texture2D" uid="uid://kq35ydd76sqk" path="res://assets/sprites/misc/laser_bullet.png" id="2_jpnom"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_27gss"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rsks"]
+size = Vector2(11, 5)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_d6xqk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_jpnom")
 offset = Vector2(-17, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
-shape = SubResource("CircleShape2D_27gss")
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_1rsks")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
