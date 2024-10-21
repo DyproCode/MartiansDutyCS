@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ny3lh3xl407s" path="res://assets/fonts/upheavtt.ttf" id="2_amorn"]
 
 [node name="PauseMenu" type="Control"]
+z_index = 4
 custom_minimum_size = Vector2(180, 275)
 layout_mode = 3
 anchors_preset = 0

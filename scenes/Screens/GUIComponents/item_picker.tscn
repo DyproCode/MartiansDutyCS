@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtyn8fbydtkbi"]
+[gd_scene load_steps=3 format=3 uid="uid://dtyn8fbydtkbi"]
 
+[ext_resource type="Script" path="res://scripts/GUIComponents/ItemPicker.cs" id="1_4wssx"]
 [ext_resource type="PackedScene" uid="uid://d4fh2fpemhro1" path="res://scenes/Screens/GUIComponents/item_slot.tscn" id="1_5oiuc"]
 
 [node name="ItemPicker" type="Control"]
@@ -10,6 +11,7 @@ offset_right = 0.199982
 offset_bottom = -0.0400085
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4wssx")
 
 [node name="ItemSelectionBox" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -20,7 +22,7 @@ offset_right = -260.16
 offset_bottom = -97.88
 theme_override_constants/separation = 15
 
-[node name="ItemSlot" parent="ItemSelectionBox" instance=ExtResource("1_5oiuc")]
+[node name="ItemSlot1" parent="ItemSelectionBox" instance=ExtResource("1_5oiuc")]
 layout_mode = 2
 
 [node name="ItemSlot2" parent="ItemSelectionBox" instance=ExtResource("1_5oiuc")]

@@ -40,6 +40,11 @@ public partial class PlayerScene : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustReleased("DEBUG_INCREMENT_ROUND"))
+		{
+			GameManager.GetInstance().IncreaseRound();
+		}
+		
 		_sprite.Rotation = GetLocalMousePosition().Angle();
 		_fireMarker.GlobalPosition = new Vector2((float)(GlobalPosition.X + Math.Cos(_sprite.Rotation + Math.PI / 20) * 40),
 			(float)(GlobalPosition.Y + Math.Sin(_sprite.Rotation + Math.PI / 20) * 40));

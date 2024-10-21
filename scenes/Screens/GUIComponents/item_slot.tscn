@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4fh2fpemhro1"]
+[gd_scene load_steps=5 format=3 uid="uid://d4fh2fpemhro1"]
 
 [ext_resource type="Texture2D" uid="uid://3dlcngsd78qp" path="res://assets/sprites/GUI/itemmenu.png" id="1_3v8gk"]
+[ext_resource type="Script" path="res://scripts/GUIComponents/ItemSlot.cs" id="1_8hrmg"]
 [ext_resource type="Texture2D" uid="uid://xmcr1vq87osx" path="res://assets/sprites/Item Icons/MD_GalaxyHourglass.png" id="2_n0yun"]
 [ext_resource type="FontFile" uid="uid://ny3lh3xl407s" path="res://assets/fonts/upheavtt.ttf" id="3_06k3o"]
 
@@ -10,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 96.0
 offset_bottom = 138.0
+script = ExtResource("1_8hrmg")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -59,10 +61,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

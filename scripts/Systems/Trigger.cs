@@ -5,7 +5,8 @@ namespace MartiansDutyCS.scripts.Systems;
 
 public enum TriggerType
 {
-    Die
+    Die,
+    OnAcquire
 }
 
 public class Trigger

@@ -1,5 +1,6 @@
 ﻿using Godot;
 using MartiansDutyCS.scripts.Entities;
+using MartiansDutyCS.scripts.Items;
 
 namespace MartiansDutyCS.scripts.Systems;
 
@@ -10,10 +11,20 @@ public partial class EventHandler : Node
 
     [Signal]
     public delegate void EnemyDiesEventHandler(BaseEnemy enemy);
+
+    [Signal]
+    public delegate void EndOfRoundEventHandler();
+
+    [Signal]
+    public delegate void ItemSelectedEventHandler(Item selectedItem);
+
+    [Signal]
+    public delegate void ItemAcquireEventHandler(Item acquiredItem);
     
     private EventHandler()
     {
         Connect(SignalName.EnemyDies, new Callable(this, nameof(OnEnemyDies)));
+        Connect(SignalName.ItemAcquire, new Callable(this, nameof(OnItemAcquire)));
     }
     
     private void OnEnemyDies(BaseEnemy enemy)
@@ -26,6 +37,17 @@ public partial class EventHandler : Node
             }
         }
     }
+
+    private void OnItemAcquire(Item item)
+    {
+        foreach (var trigger in item.Triggers)
+        {
+            if (trigger.TriggerType == TriggerType.OnAcquire)
+            {
+                trigger.Execute();
+            }
+        }
+    }
     
     public static EventHandler GetInstance()
     {
@@ -33,7 +55,7 @@ public partial class EventHandler : Node
         {
             _eventHandler = new EventHandler();
         }
-
+        
         return _eventHandler;
     }
 }

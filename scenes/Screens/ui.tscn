@@ -56,3 +56,11 @@ anchor_right = 0.841
 anchor_bottom = 0.076
 offset_top = -2.0
 offset_right = 0.159973
+
+[node name="RoundLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 55.0
+text = "100
+"

@@ -1,4 +1,7 @@
-﻿namespace MartiansDutyCS.scripts.Systems;
+﻿using System.Collections.Generic;
+using MartiansDutyCS.scripts.Items;
+
+namespace MartiansDutyCS.scripts.Systems;
 
 public class Player
 {
@@ -8,9 +11,10 @@ public class Player
     public int Damage = 1;
     public int MaxHealth = 5;
     public int CurrentHealth;
+    private List<Item> _items = new List<Item>();
     
     private static Player _player = null;
-
+    
     private Player()
     {
         CurrentHealth = MaxHealth;
@@ -24,5 +28,12 @@ public class Player
         }
 
         return _player;
+    }
+
+    public void GivePlayerItem(Item item)
+    {
+
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
+        _items.Add(item);
     }
 }

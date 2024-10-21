@@ -4282,7 +4282,7 @@ sources/0 = SubResource("TileSetAtlasSource_iwvix")
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5y2ot")]
-position = Vector2(377, 223)
+position = Vector2(-530, -98)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -1)
