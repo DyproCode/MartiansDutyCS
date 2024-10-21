@@ -9,6 +9,7 @@ public class Player
     //Game Attributes
     public int Money = 0;
     public float Speed = 150;
+    public double AttackSpeed = 0.35;
     public int Damage = 1;
     public int MaxHealth = 5;
     public int CurrentHealth;

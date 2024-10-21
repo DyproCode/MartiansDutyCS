@@ -6,7 +6,7 @@ namespace MartiansDutyCS.scripts.Entities.Components;
 
 public partial class AttackComponent : Node
 {
-    private RayCast2D _rayCast2D;
+    private Area2D _area2D;
     private Timer _attackTimer;
     private BaseEnemy _parent;
     private PlayerScene _target;
@@ -14,7 +14,7 @@ public partial class AttackComponent : Node
     public override void _Ready()
     {
         _parent = GetParent() as BaseEnemy;
-        _rayCast2D = GetNode<RayCast2D>("RayCast2D");
+        _area2D = GetNode<Area2D>("Area2D");
         _attackTimer = GetNode<Timer>("AttackTimer");
         
         _target = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
@@ -23,12 +23,10 @@ public partial class AttackComponent : Node
 
     public override void _Process(double delta)
     {
-        if (_rayCast2D.IsColliding() && _rayCast2D.GetCollider() == _target)
+        
+        if (_area2D.OverlapsBody(_target) && _attackTimer.IsStopped())
         {
-            if (_attackTimer.IsStopped())
-            {
                 Attack();
-            }
         }
     }
 
@@ -36,13 +34,11 @@ public partial class AttackComponent : Node
     {
         _attackTimer.Start();
         _parent.State = "attacking";
-        _rayCast2D.Enabled = false;
         _target.TakeDamage(_parent!.Damage);
     }
 
     private void _on_attack_timer_timeout()
     {
         _parent.State = "walking";
-        _rayCast2D.Enabled = true;
     }
 }

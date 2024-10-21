@@ -33,13 +33,15 @@ public partial class Gremloid : BaseEnemy
     {
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         _sprite.LookAt(player.GlobalPosition);
-        if (State == "walking")
-        {
-            if (this.GlobalPosition.DistanceTo(player.GlobalPosition) > 1)
-            {
-                Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
-            }
+        if (State == "walking" && GlobalPosition.DistanceTo(player.GlobalPosition) > 10)
+        { 
+            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
         }
+        else
+        {
+            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * -1;
+        }
+        
         SetAnimation();
         MoveAndSlide();
     }

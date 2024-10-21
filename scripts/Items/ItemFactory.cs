@@ -16,7 +16,9 @@ public class ItemFactory
         {
           "SyringeClamp",
           "BulletProofVest",
-          "LocalCurrency"
+          "LocalCurrency",
+          "RapidFire",
+          "GremloidSkull"
         };
     }
 
@@ -44,7 +46,14 @@ public class ItemFactory
         {
             return _itemDirector.BuildItem(new LocalCurrency());
         }
-        
+        else if (itemName == "RapidFire")
+        {
+            return _itemDirector.BuildItem(new RapidFire());
+        }
+        else if (itemName == "GremloidSkull")
+        {
+            return _itemDirector.BuildItem(new GremloidSkull());
+        }
         return null;
     }
 

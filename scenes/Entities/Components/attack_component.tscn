@@ -1,15 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cokhslsnvn4kc"]
+[gd_scene load_steps=3 format=3 uid="uid://cokhslsnvn4kc"]
 
 [ext_resource type="Script" path="res://scripts/Entities/Components/AttackComponent.cs" id="1_ifxhn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aydmo"]
+radius = 12.0
 
 [node name="AttackComponent" type="Node2D"]
 script = ExtResource("1_ifxhn")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(20, 0)
-
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_aydmo")
+debug_color = Color(0.962005, 6.73831e-07, 0.507087, 0.42)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

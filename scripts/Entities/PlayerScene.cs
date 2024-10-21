@@ -36,6 +36,7 @@ public partial class PlayerScene : CharacterBody2D
 		_healthBar = GetNode<health_bar>("HealthBar");
 		
 		_healthBar.InitializeHealthBar(Player.GetInstance().MaxHealth);
+		_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
 	}
 
 	public override void _Process(double delta)
@@ -43,6 +44,11 @@ public partial class PlayerScene : CharacterBody2D
 		if (Input.IsActionJustReleased("DEBUG_INCREMENT_ROUND"))
 		{
 			GameManager.GetInstance().IncreaseRound();
+		}
+
+		if (_fireRate.IsStopped() && _fireRate.WaitTime != Player.GetInstance().AttackSpeed)
+		{
+			_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
 		}
 		
 		_sprite.Rotation = GetLocalMousePosition().Angle();
