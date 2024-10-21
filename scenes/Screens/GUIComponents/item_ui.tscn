@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4krvokfv1kik"]
+[gd_scene load_steps=3 format=3 uid="uid://d4krvokfv1kik"]
 
+[ext_resource type="Script" path="res://scripts/GUIComponents/ItemUi.cs" id="1_a3i2q"]
 [ext_resource type="Texture2D" uid="uid://xmcr1vq87osx" path="res://assets/sprites/Item Icons/MD_GalaxyHourglass.png" id="1_go5la"]
 
 [node name="ItemUI" type="Control"]
@@ -10,6 +11,7 @@ anchor_bottom = 0.038
 offset_bottom = 2.32
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_a3i2q")
 
 [node name="ItemTexture" type="TextureRect" parent="."]
 layout_mode = 1

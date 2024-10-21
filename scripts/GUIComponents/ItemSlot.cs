@@ -13,7 +13,7 @@ public partial class ItemSlot : Control
     {
         _item = item;
         _itemTexture.SetTexture(_item.Texture);
-        _itemName.SetText(_item.Name);
+        _itemName.SetText(_item.ItemName);
         _description.SetText(_item.Description);
     }
     
@@ -31,6 +31,9 @@ public partial class ItemSlot : Control
 
     public override void _ExitTree()
     {
-        _item.Free();
+        if (_item != null)
+        {
+            _item.QueueFree();
+        }
     }
 }
