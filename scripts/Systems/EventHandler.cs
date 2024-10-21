@@ -36,6 +36,17 @@ public partial class EventHandler : Node
                 trigger.Execute();  
             }
         }
+
+        foreach (var item in Player.GetInstance().GetItems())
+        {
+            foreach (var trigger in item.Triggers)
+            {
+                if (trigger.TriggerType == TriggerType.Die)
+                {
+                    trigger.Execute();
+                }
+            }
+        }
     }
 
     private void OnItemAcquire(Item item)

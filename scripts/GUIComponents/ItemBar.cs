@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using MartiansDutyCS.scripts.Items;
+using MartiansDutyCS.scripts.Systems;
 using EventHandler = MartiansDutyCS.scripts.Systems.EventHandler;
 
 public partial class ItemBar : Control
@@ -16,9 +17,12 @@ public partial class ItemBar : Control
 
     public void OnItemAcquired(Item item)
     {
-        var itemUiNode = _itemUiPackedScene.Instantiate();
-        var itemUi = itemUiNode as ItemUi; 
-        itemUi!.Initialize(item);
-        _boxContainer.AddChild(itemUi);
+        if (!Player.GetInstance().hasItem(item))
+        {
+            var itemUiNode = _itemUiPackedScene.Instantiate();
+            var itemUi = itemUiNode as ItemUi; 
+            itemUi!.Initialize(item);
+            _boxContainer.AddChild(itemUi);
+        }
     }
 }

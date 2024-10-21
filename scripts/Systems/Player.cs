@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MartiansDutyCS.scripts.Items;
 
 namespace MartiansDutyCS.scripts.Systems;
@@ -32,8 +33,31 @@ public class Player
 
     public void GivePlayerItem(Item item)
     {
-
         EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
-        _items.Add(item);
+
+        if (_items.Any(i => i.ItemName == item.ItemName))
+        {
+            _items.Find(i => i.ItemName == item.ItemName).Amount++;
+        }
+        else
+        {
+            _items.Add(item);
+        }
     }
+
+    public bool hasItem(string itemName)
+    {
+        return _items.Any(i => i.ItemName == itemName);
+    }
+
+    public bool hasItem(Item item)
+    {
+        return _items.Any(i => i.ItemName == item.ItemName);
+    }
+
+    public List<Item> GetItems()
+    {
+        return _items;
+    }
+    
 }

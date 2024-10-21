@@ -5,12 +5,18 @@ using EventHandler = MartiansDutyCS.scripts.Systems.EventHandler;
 
 public partial class ItemSlot : Control
 {
-    private Item _item;
+    private Item _item = null;
     private TextureRect _itemTexture;
     private Label _description;
     private Label _itemName;
     public void Initialize(Item item)
     {
+        if (_item != null)
+        {
+            _item.QueueFree();
+            _item = null;
+        }
+        
         _item = item;
         _itemTexture.SetTexture(_item.Texture);
         _itemName.SetText(_item.ItemName);

@@ -14,7 +14,10 @@ public partial class ItemUi : Control
         _amountLabel = GetNode<Label>("Amount");
         
         _itemTexture.SetTexture(_item.Texture);
-        
+    }
+
+    public override void _Process(double delta)
+    {
         if (_item.Amount > 1)
         {
             _amountLabel.SetText(_item.Amount.ToString());
@@ -28,13 +31,5 @@ public partial class ItemUi : Control
     public void Initialize(Item item)
     {
         _item = item;
-    }
-
-    public override void _ExitTree()
-    {
-        if (_item != null)
-        {
-            _item.QueueFree();   
-        }
     }
 }

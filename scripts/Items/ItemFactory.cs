@@ -14,7 +14,9 @@ public class ItemFactory
     {
         _itemNames = new List<string>
         {
-          "SyringeClamp"  
+          "SyringeClamp",
+          "BulletProofVest",
+          "LocalCurrency"
         };
     }
 
@@ -33,6 +35,14 @@ public class ItemFactory
         if (itemName == "SyringeClamp")
         {
             return _itemDirector.BuildItem(new SyringeClamp());
+        }
+        else if (itemName == "BulletProofVest")
+        {
+            return _itemDirector.BuildItem(new BulletProofVest());
+        }
+        else if (itemName == "LocalCurrency")
+        {
+            return _itemDirector.BuildItem(new LocalCurrency());
         }
         
         return null;
