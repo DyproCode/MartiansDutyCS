@@ -31,5 +31,6 @@ public partial class ItemUi : Control
     public void Initialize(Item item)
     {
         _item = item;
+        TooltipText = item.Description;
     }
 }
