@@ -10,7 +10,7 @@ public partial class Gremloid : BaseEnemy
 {
     //Health
     public static int MaxHealth = 5;
-    public static float Speed = 150;
+    public static float Speed = 170;
     public static int MoneyDrop = 5;
     
     public override void _Ready()

@@ -65,7 +65,7 @@ public partial class PlayerScene : CharacterBody2D
 			_dashDir = Vector2.FromAngle(_sprite.Rotation);
 		}
 
-		if (Input.IsActionPressed("SHOOT"))
+		if (Input.IsActionPressed("SHOOT") && _state != "dashing")
 		{
 			Shoot();
 		}
