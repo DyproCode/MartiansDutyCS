@@ -24,7 +24,7 @@ public partial class AttackComponent : Node
     public override void _Process(double delta)
     {
         
-        if (_area2D.OverlapsBody(_target) && _attackTimer.IsStopped())
+        if (_area2D.OverlapsArea(_target.HitArea) && _attackTimer.IsStopped())
         {
                 Attack();
         }

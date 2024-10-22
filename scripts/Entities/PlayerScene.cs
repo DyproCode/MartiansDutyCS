@@ -22,6 +22,7 @@ public partial class PlayerScene : CharacterBody2D
 	private Timer _fireRate;
 	private Timer _rollTimer;
 	private health_bar _healthBar;
+	public Area2D HitArea;
 	
 	//PackedScenes
 	private PackedScene _bulletPackedScene = (PackedScene)GD.Load("res://scenes/Entities/Projectiles/bullet.tscn"); 
@@ -34,6 +35,7 @@ public partial class PlayerScene : CharacterBody2D
 		_rollTimer = GetNode<Timer>("RollTimer");
 		_fireMarker = GetNode<Marker2D>("FireMarker");
 		_healthBar = GetNode<health_bar>("HealthBar");
+		HitArea = GetNode<Area2D>("HitArea");
 		
 		_healthBar.InitializeHealthBar(Player.GetInstance().MaxHealth);
 		_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);

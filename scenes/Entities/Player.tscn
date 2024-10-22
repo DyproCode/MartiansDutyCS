@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cyre77ux36jsf"]
+[gd_scene load_steps=30 format=3 uid="uid://cyre77ux36jsf"]
 
 [ext_resource type="Script" path="res://scripts/Entities/PlayerScene.cs" id="1_ss81b"]
 [ext_resource type="PackedScene" uid="uid://1uvl32hnjnnx" path="res://scenes/Entities/Components/health_bar.tscn" id="2_2ycl4"]
@@ -172,11 +172,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ty8ak"]
-radius = 6.0
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27c18"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-collision_layer = 3
 script = ExtResource("1_ss81b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -204,6 +205,14 @@ offset_left = -13.0
 offset_top = -15.0
 offset_right = 12.0
 offset_bottom = -10.0
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_27c18")
+debug_color = Color(0.966904, 0, 0.477621, 0.42)
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
