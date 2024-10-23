@@ -594,9 +594,10 @@ size = Vector2(54.375, 83)
 size = Vector2(51.5, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pgpl"]
-size = Vector2(151.75, 28.375)
+size = Vector2(122.438, 36.1875)
 
 [node name="GremloidBoss" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
 script = ExtResource("1_u0njj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -647,7 +648,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlapRange"]
-position = Vector2(118, 130)
+position = Vector2(98.7813, 125)
 shape = SubResource("RectangleShape2D_0pgpl")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]

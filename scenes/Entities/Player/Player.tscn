@@ -1,10 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://cyre77ux36jsf"]
+[gd_scene load_steps=33 format=3 uid="uid://cyre77ux36jsf"]
 
-[ext_resource type="Script" path="res://scripts/Entities/PlayerScene.cs" id="1_ss81b"]
+[ext_resource type="Script" path="res://scripts/Entities/Player/PlayerScene.cs" id="1_owfql"]
 [ext_resource type="PackedScene" uid="uid://1uvl32hnjnnx" path="res://scenes/Entities/Components/health_bar.tscn" id="2_2ycl4"]
 [ext_resource type="Texture2D" uid="uid://bham8e40vkrvu" path="res://assets/sprites/Characters/main_character/main_character_idle..png" id="2_cwp4o"]
 [ext_resource type="Texture2D" uid="uid://bj1e7rrgfmbub" path="res://assets/sprites/Characters/main_character/main_character_roll.png" id="2_e6slu"]
 [ext_resource type="Texture2D" uid="uid://cxi1et3rhqu88" path="res://assets/sprites/Characters/main_character/main_character_sheet.png" id="3_o6cbh"]
+[ext_resource type="PackedScene" uid="uid://cit7uvhob03hm" path="res://scenes/Entities/Player/PlayerStates/player_walking.tscn" id="6_flmw1"]
+[ext_resource type="PackedScene" uid="uid://cckangh8ybjpm" path="res://scenes/Entities/Player/PlayerStates/player_idle.tscn" id="7_33ov3"]
+[ext_resource type="PackedScene" uid="uid://fghclw658pm4" path="res://scenes/Entities/Player/PlayerStates/player_dashing.tscn" id="8_c0718"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67ekv"]
 atlas = ExtResource("2_e6slu")
@@ -178,7 +181,7 @@ radius = 7.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-script = ExtResource("1_ss81b")
+script = ExtResource("1_owfql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dc8vq")
@@ -213,6 +216,14 @@ collision_mask = 0
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_27c18")
 debug_color = Color(0.966904, 0, 0.477621, 0.42)
+
+[node name="States" type="Node" parent="."]
+
+[node name="PlayerWalking" parent="States" instance=ExtResource("6_flmw1")]
+
+[node name="PlayerIdle" parent="States" instance=ExtResource("7_33ov3")]
+
+[node name="PlayerDashing" parent="States" instance=ExtResource("8_c0718")]
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]

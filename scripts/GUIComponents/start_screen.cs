@@ -8,6 +8,12 @@ public partial class start_screen : Control
 		GetTree().ChangeSceneToFile("res://scenes/Screens/main_game.tscn");
 	}
 
+	private void _on_arena_btn_pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/Screens/arena.tscn");
+	
+	}
+	
 	private void _on_quit_btn_pressed()
 	{
 		GetTree().Quit();

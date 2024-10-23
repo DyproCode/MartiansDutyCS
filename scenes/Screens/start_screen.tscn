@@ -70,5 +70,15 @@ theme_override_fonts/font = ExtResource("4_6kvj6")
 theme_override_font_sizes/font_size = 50
 text = "Martian's Duty"
 
+[node name="ArenaBtn" type="Button" parent="."]
+layout_mode = 2
+offset_left = 424.0
+offset_top = 232.0
+offset_right = 504.0
+offset_bottom = 263.0
+text = "Debug
+"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="ArenaBtn" to="." method="_on_arena_btn_pressed"]

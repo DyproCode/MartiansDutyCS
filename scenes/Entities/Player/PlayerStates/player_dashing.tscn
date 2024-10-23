@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fghclw658pm4"]
+
+[ext_resource type="Script" path="res://scripts/Entities/Player/PlayerStates/DashingState.cs" id="1_1op5l"]
+
+[node name="PlayerDashing" type="Node2D"]
+script = ExtResource("1_1op5l")
+
+[node name="RollTimer" type="Timer" parent="."]

@@ -1,22 +1,24 @@
 using Godot;
 using System;
+using MartiansDutyCS.scripts.Entities;
+using MartiansDutyCS.scripts.Entities.Player.PlayerStates;
 using MartiansDutyCS.scripts.Systems;
 
 public partial class PlayerScene : CharacterBody2D
 {
 	//Movement
 	private string _state = "walking";
+	
+	
+	public IState State = null;
+	private WalkingState _walkingState;
+	private IdleState _idleState;
+	private DashingState _dashingState;
+	
 	private bool _canShoot = true;
 	
-	//Dash
-	private const int DASH_TIME = 10;
-	private int _currentDashTime;
-	private Vector2 _dashDir = Vector2.Zero;
-	private float _dashSpeed = 1000;
-	private bool _canRoll = true;
-	
 	//Godot Objects
-	private AnimatedSprite2D _sprite;
+	public AnimatedSprite2D _sprite;
 	private CollisionShape2D _collisionShape2D;
 	private Marker2D _fireMarker;
 	private Timer _fireRate;
@@ -36,9 +38,15 @@ public partial class PlayerScene : CharacterBody2D
 		_fireMarker = GetNode<Marker2D>("FireMarker");
 		_healthBar = GetNode<health_bar>("HealthBar");
 		HitArea = GetNode<Area2D>("HitArea");
+
+		_idleState = GetNode<IdleState>("States/PlayerIdle"); 
+		_walkingState = GetNode<WalkingState>("States/PlayerWalking");
+		_dashingState = GetNode<DashingState>("States/PlayerDashing");
 		
 		_healthBar.InitializeHealthBar(Player.GetInstance().MaxHealth);
 		_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
+		
+		State = _idleState;
 	}
 
 	public override void _Process(double delta)
@@ -57,59 +65,22 @@ public partial class PlayerScene : CharacterBody2D
 		_fireMarker.GlobalPosition = new Vector2((float)(GlobalPosition.X + Math.Cos(_sprite.Rotation + Math.PI / 20) * 40),
 			(float)(GlobalPosition.Y + Math.Sin(_sprite.Rotation + Math.PI / 20) * 40));
 		
-		if (Input.IsActionJustPressed("DASH") && _canRoll)
-		{
-			_state = "dashing";
-			_rollTimer.Start();
-			_canRoll = false;
-			_dashDir = Vector2.FromAngle(_sprite.Rotation);
-		}
-
 		if (Input.IsActionPressed("SHOOT") && _state != "dashing")
 		{
 			Shoot();
 		}
 		
-		if (_state != "dashing")
+		State.PhysicsUpdate();
+		
+		if (_state == "knockback")
 		{
-			var dir = Input.GetVector("LEFT", "RIGHT", "UP", "DOWN");
-			Velocity = dir * Player.GetInstance().Speed;
-		}
-
-		if (_state == "dashing")
-		{
-			if (_currentDashTime <= DASH_TIME)
-			{
-				_currentDashTime++;
-				Velocity = _dashSpeed * _dashDir;
-			}
-			else
-			{
-				_currentDashTime = 0;
-				_state = "walking";
-			}
+			Velocity = Vector2.FromAngle(_sprite.Rotation) * -2000;
+			_state = "walking";
 		}
 		
-		this.SetState();
 		MoveAndSlide();
 	}
 	
-	private void SetState()
-	{
-		if (_state == "dashing")
-		{
-		}
-		else if (Velocity == Vector2.Zero)
-		{
-			_state = "idle";
-		}
-		else
-		{
-			_state = "walking";
-		}  
-		_sprite.Animation = _state;
-	}
-
 	private void Shoot()
 	{
 		if (_canShoot)
@@ -140,8 +111,26 @@ public partial class PlayerScene : CharacterBody2D
 		_canShoot = true;
 	}
 	
-	private void _on_roll_timer_timeout()
+	public void KnockBack()
 	{
-		_canRoll = true;
+		_state = "knockback";
+	}
+
+	public void SwitchState(string state)
+	{
+		State.Exit();
+		if (state == "walking")
+		{
+			State = _walkingState;
+		}
+		else if (state == "dashing")
+		{
+			State = _dashingState;
+		}
+		else if (state == "idle")
+		{
+			State = _idleState;
+		}
+		State.Enter();
 	}
 }

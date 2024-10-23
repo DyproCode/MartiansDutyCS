@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://bt3mkjtljx6eo"]
 
-[ext_resource type="PackedScene" uid="uid://cyre77ux36jsf" path="res://scenes/Entities/Player.tscn" id="1_5y2ot"]
+[ext_resource type="PackedScene" uid="uid://cyre77ux36jsf" path="res://scenes/Entities/Player/Player.tscn" id="1_5y2ot"]
 [ext_resource type="PackedScene" uid="uid://djhh4qdja7b40" path="res://scenes/Screens/ui.tscn" id="1_evqab"]
 [ext_resource type="PackedScene" uid="uid://c6yf268qav4kf" path="res://scenes/Entities/gremloid_boss.tscn" id="2_2rcoj"]
 [ext_resource type="Texture2D" uid="uid://dxst6a2kkg6il" path="res://assets/sprites/Backgrounds/tile_sheet.png" id="2_13ov0"]
