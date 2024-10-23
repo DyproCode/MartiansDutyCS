@@ -4,5 +4,3 @@
 
 [node name="PlayerDashing" type="Node2D"]
 script = ExtResource("1_1op5l")
-
-[node name="RollTimer" type="Timer" parent="."]

@@ -2,12 +2,12 @@
 
 namespace MartiansDutyCS.scripts.Entities.Player.PlayerStates;
 
-public partial class DashingState : Node, IState
+public partial class KnockBackState : Node, IState
 {
     private PlayerScene _player;
-    private const int DASH_TIME = 10;
+    private const int KNOCK_BACK_TIME = 2;
     private int _currentDashTime;
-    private float _dashSpeed = 1000;
+    private float _KnockBackSpeed = 1000;
     private Vector2 _dashDir = Vector2.Zero;
     
     public override void _Ready()
@@ -17,9 +17,7 @@ public partial class DashingState : Node, IState
     
     public void Enter()
     {
-        _player._sprite.Animation = "dashing";
-        _player._rollTimer.Start();
-        _player._canRoll = false;
+        _player._sprite.Animation = "walking";
         _dashDir = Vector2.FromAngle(_player._sprite.Rotation);
     }
 
@@ -29,10 +27,10 @@ public partial class DashingState : Node, IState
 
     public void PhysicsUpdate()
     {
-        if (_currentDashTime <= DASH_TIME)
+        if (_currentDashTime <= KNOCK_BACK_TIME)
         {
             _currentDashTime++;
-            _player.Velocity = _dashSpeed * _dashDir;
+            _player.Velocity = _KnockBackSpeed * -_dashDir;
         }
         else
         {
