@@ -15,7 +15,7 @@ public partial class BigGremloid : BaseEnemy
     
     public override void _Ready()
     {
-        this.Damage = 2;
+        this.Damage = 0;
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
         _healthComponent.Initialize(MaxHealth);
@@ -39,7 +39,7 @@ public partial class BigGremloid : BaseEnemy
         }
         else
         {
-            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * -1;
+            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * -0.1f;
         }
         
         SetAnimation();

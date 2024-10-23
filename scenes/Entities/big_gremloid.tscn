@@ -186,7 +186,8 @@ shape = SubResource("RectangleShape2D_cywq6")
 debug_color = Color(0.329392, 0.504118, 0.955532, 0.42)
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_g8dy5")]
-scale = Vector2(1.5, 1.5)
+position = Vector2(-1, 5.96046e-08)
+scale = Vector2(2.5, 2.5)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ncniq")]
 position = Vector2(-12, -29)

@@ -119,7 +119,7 @@ public partial class PlayerScene : CharacterBody2D
 			
 			newBullet.Initialize("Enemy", Player.GetInstance().Damage, _sprite.Rotation, _fireMarker.GlobalPosition);
 			
-			GetTree().Root.GetNode("MainGame").AddChild(newBullet);
+			GetParent().AddChild(newBullet);
 			_canShoot = false;
 			_fireRate.Start();
 		}

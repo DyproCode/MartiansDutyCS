@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://bt3mkjtljx6eo"]
+[gd_scene load_steps=19 format=4 uid="uid://bt3mkjtljx6eo"]
 
 [ext_resource type="PackedScene" uid="uid://cyre77ux36jsf" path="res://scenes/Entities/Player.tscn" id="1_5y2ot"]
 [ext_resource type="PackedScene" uid="uid://djhh4qdja7b40" path="res://scenes/Screens/ui.tscn" id="1_evqab"]
+[ext_resource type="PackedScene" uid="uid://c6yf268qav4kf" path="res://scenes/Entities/gremloid_boss.tscn" id="2_2rcoj"]
 [ext_resource type="Texture2D" uid="uid://dxst6a2kkg6il" path="res://assets/sprites/Backgrounds/tile_sheet.png" id="2_13ov0"]
 [ext_resource type="Texture2D" uid="uid://by28t3drjlc4" path="res://assets/sprites/Terrain/wassted_ship.png" id="3_2lvhc"]
 [ext_resource type="Texture2D" uid="uid://dq4ymyknpii6d" path="res://assets/sprites/Terrain/spaceship.png" id="4_4hb13"]
@@ -4305,6 +4306,9 @@ position = Vector2(3264, -1211)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -1)
 limit_smoothed = true
+
+[node name="GremloidBoss" parent="Player" instance=ExtResource("2_2rcoj")]
+position = Vector2(-177, -197)
 
 [node name="UI" parent="." instance=ExtResource("1_evqab")]
 
