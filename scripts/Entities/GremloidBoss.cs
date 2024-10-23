@@ -13,7 +13,6 @@ public partial class GremloidBoss : BaseEnemy
     public static float Speed = 70;
     public static int MoneyDrop = 100;
 
-    public Area2D _hitbox;
     public Area2D _threeHitRange;
     public Area2D _leftSwipeRange;
     public Area2D _rightSwipeRange;
@@ -25,7 +24,6 @@ public partial class GremloidBoss : BaseEnemy
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
 
-        _hitbox = GetNode<Area2D>("HitBox");
         _threeHitRange = GetNode<Area2D>("ThreeHitRange");
         _leftSwipeRange = GetNode<Area2D>("LeftSideSwipeRange");
         _rightSwipeRange = GetNode<Area2D>("RightSideSwipeRange");
@@ -47,7 +45,8 @@ public partial class GremloidBoss : BaseEnemy
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         if (State != "attacking")
         {
-            LookAt(player.Position);
+            Rotation = (float)Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(player.GlobalPosition).Angle(),
+                1.5f * delta);
             if (_threeHitRange.OverlapsArea(player.HitArea))
             {
                 _sprite.Play("three_hit_combo");
