@@ -10,7 +10,7 @@ public partial class GremloidBoss : BaseEnemy
 {
     //Health
     public static int MaxHealth = 40;
-    public static float Speed = 160;
+    public static float Speed = 70;
     public static int MoneyDrop = 100;
 
     public Area2D _hitbox;
@@ -18,7 +18,6 @@ public partial class GremloidBoss : BaseEnemy
     public Area2D _leftSwipeRange;
     public Area2D _rightSwipeRange;
     public Area2D _slapRange;
-    public Timer _attackTimer;    
     
     public override void _Ready()
     {
@@ -31,7 +30,6 @@ public partial class GremloidBoss : BaseEnemy
         _leftSwipeRange = GetNode<Area2D>("LeftSideSwipeRange");
         _rightSwipeRange = GetNode<Area2D>("RightSideSwipeRange");
         _slapRange = GetNode<Area2D>("SlapRange");
-        _attackTimer = GetNode<Timer>("AttackTimer");
         
         _healthComponent.Initialize(MaxHealth);
         
@@ -49,15 +47,10 @@ public partial class GremloidBoss : BaseEnemy
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         if (State != "attacking")
         {
-            LookAt(player.GlobalPosition);
-            if (_slapRange.OverlapsArea(player.HitArea))
+            LookAt(player.Position);
+            if (_threeHitRange.OverlapsArea(player.HitArea))
             {
-                _sprite.Play("slap");
-                State = "attacking";
-            }
-            else if (_rightSwipeRange.OverlapsArea(player.HitArea))
-            {
-                _sprite.Play("right_side_swipe");
+                _sprite.Play("three_hit_combo");
                 State = "attacking";
             }
             else if (_leftSwipeRange.OverlapsArea(player.HitArea))
@@ -65,16 +58,26 @@ public partial class GremloidBoss : BaseEnemy
                 _sprite.Play("left_side_swipe");
                 State = "attacking";
             }
-            else if (_threeHitRange.OverlapsArea(player.HitArea))
+            else if (_rightSwipeRange.OverlapsArea(player.HitArea))
             {
-                _sprite.Play("three_hit_combo");
+                _sprite.Play("right_side_swipe");
                 State = "attacking";
             }
+            else if (_slapRange.OverlapsArea(player.HitArea))
+            {
+                _sprite.Play("slap");
+                State = "attacking";
+            }
+            
         }
         
         if (State == "walking")
         { 
             Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+        }
+        else
+        {
+            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * -0.1f;
         }
         
         MoveAndSlide();
@@ -82,7 +85,6 @@ public partial class GremloidBoss : BaseEnemy
     
     public void _on_animated_sprite_2d_animation_finished()
     {
-        GD.Print("AnimationOver");
         if (State == "attacking")
         {
             var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;

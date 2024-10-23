@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cyre77ux36jsf" path="res://scenes/Entities/Player.tscn" id="1_4f1fg"]
 [ext_resource type="Texture2D" uid="uid://dxst6a2kkg6il" path="res://assets/sprites/Backgrounds/tile_sheet.png" id="1_eahek"]
-[ext_resource type="PackedScene" uid="uid://cpita2qxcoidy" path="res://scenes/Entities/big_gremloid.tscn" id="4_ji8rc"]
+[ext_resource type="PackedScene" uid="uid://c6yf268qav4kf" path="res://scenes/Entities/gremloid_boss.tscn" id="3_h7wwj"]
 [ext_resource type="PackedScene" uid="uid://djhh4qdja7b40" path="res://scenes/Screens/ui.tscn" id="4_prnu7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqo4j"]
@@ -9869,5 +9869,5 @@ tile_set = SubResource("TileSet_jkxqg")
 
 [node name="UI" parent="." instance=ExtResource("4_prnu7")]
 
-[node name="BigGremloid" parent="." instance=ExtResource("4_ji8rc")]
-position = Vector2(26, 304)
+[node name="GremloidBoss" parent="." instance=ExtResource("3_h7wwj")]
+position = Vector2(192, 286)

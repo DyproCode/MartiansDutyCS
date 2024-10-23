@@ -4307,9 +4307,6 @@ position = Vector2(3264, -1211)
 position = Vector2(1, -1)
 limit_smoothed = true
 
-[node name="GremloidBoss" parent="Player" instance=ExtResource("2_2rcoj")]
-position = Vector2(-177, -197)
-
 [node name="UI" parent="." instance=ExtResource("1_evqab")]
 
 [node name="tilemaps" type="Node" parent="."]
@@ -4343,3 +4340,6 @@ position = Vector2(-625, 111)
 
 [node name="BigGremloid" parent="." instance=ExtResource("7_tq0dy")]
 position = Vector2(3002, -1208)
+
+[node name="GremloidBoss" parent="." instance=ExtResource("2_2rcoj")]
+position = Vector2(3274, -1305)

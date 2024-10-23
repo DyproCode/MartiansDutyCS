@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c6yf268qav4kf"]
+[gd_scene load_steps=92 format=3 uid="uid://c6yf268qav4kf"]
 
 [ext_resource type="Texture2D" uid="uid://ce8mi3jc6eoen" path="res://assets/sprites/Characters/boss_gob/boss_gob_loop.png" id="1_7uejs"]
 [ext_resource type="Texture2D" uid="uid://c884bl5qsw8sx" path="res://assets/sprites/Characters/boss_gob/boss_gob_run.png" id="1_lsxum"]
@@ -581,14 +581,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jeco7"]
-radius = 23.0217
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r3on"]
-size = Vector2(45.5313, 62.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m6ve"]
-size = Vector2(50, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ir7l"]
+size = Vector2(18.0625, 63.1563)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6vnc"]
 radius = 39.0512
@@ -603,7 +597,6 @@ size = Vector2(51.5, 130)
 size = Vector2(151.75, 28.375)
 
 [node name="GremloidBoss" type="CharacterBody2D" groups=["Enemy"]]
-floor_block_on_wall = false
 script = ExtResource("1_u0njj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -614,23 +607,8 @@ autoplay = "walking"
 offset = Vector2(55, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
-shape = SubResource("CircleShape2D_jeco7")
-
-[node name="HitBox" type="Area2D" parent="."]
-position = Vector2(-56, -85)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(56.2344, 84.375)
-shape = SubResource("RectangleShape2D_7r3on")
-debug_color = Color(0.962435, 0.0538316, 0.471917, 0.42)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(69, 125)
-shape = SubResource("RectangleShape2D_0m6ve")
-debug_color = Color(0.67451, 0.152941, 0.227451, 0.513726)
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_8ir7l")
 
 [node name="ThreeHitRange" type="Area2D" parent="."]
 position = Vector2(-55, -90)
@@ -663,6 +641,7 @@ shape = SubResource("RectangleShape2D_m5qjm")
 debug_color = Color(0.791489, 0.409275, 0.343607, 0.42)
 
 [node name="SlapRange" type="Area2D" parent="."]
+z_index = 1
 position = Vector2(-55, -85)
 collision_layer = 0
 collision_mask = 2
@@ -674,7 +653,5 @@ shape = SubResource("RectangleShape2D_0pgpl")
 [node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]
 position = Vector2(-28, -56)
 scale = Vector2(3, 3)
-
-[node name="AttackTimer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
