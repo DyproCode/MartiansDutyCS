@@ -46,7 +46,7 @@ public partial class GremloidBoss : BaseEnemy
         if (State != "attacking")
         {
             Rotation = (float)Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(player.GlobalPosition).Angle(),
-                1.5f * delta);
+                2.0f * delta);
             if (_threeHitRange.OverlapsArea(player.HitArea))
             {
                 _sprite.Play("three_hit_combo");
@@ -92,5 +92,9 @@ public partial class GremloidBoss : BaseEnemy
             _sprite.Play("walking");
         }
     }
-    
+
+    public void SwitchState(string state)
+    {
+        
+    }
 }

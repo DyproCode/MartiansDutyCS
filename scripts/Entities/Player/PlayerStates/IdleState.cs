@@ -32,6 +32,10 @@ public partial class IdleState : Node, IState
             _player.SwitchState("dashing");
         }
         
+        if (Input.IsActionPressed("SHOOT"))
+        {
+            _player.Shoot();
+        }
     }
 
     public void Update()

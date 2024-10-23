@@ -4300,10 +4300,6 @@ sources/0 = SubResource("TileSetAtlasSource_iwvix")
 [node name="Player" parent="." instance=ExtResource("1_5y2ot")]
 position = Vector2(3264, -1211)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(1, -1)
-limit_smoothed = true
-
 [node name="UI" parent="." instance=ExtResource("1_evqab")]
 
 [node name="tilemaps" type="Node" parent="."]

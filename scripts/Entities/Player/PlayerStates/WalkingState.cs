@@ -30,6 +30,11 @@ public partial class WalkingState : Node, IState
             _player.SwitchState("idle");
         }
         
+        if (Input.IsActionPressed("SHOOT"))
+        {
+            _player.Shoot();
+        }
+        
         if (Input.IsActionJustPressed("DASH") && _player._canRoll)
         {
             _player.SwitchState("dashing");

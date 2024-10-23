@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ce8mi3jc6eoen" path="res://assets/sprites/Characters/boss_gob/boss_gob_loop.png" id="1_7uejs"]
 [ext_resource type="Texture2D" uid="uid://c884bl5qsw8sx" path="res://assets/sprites/Characters/boss_gob/boss_gob_run.png" id="1_lsxum"]
 [ext_resource type="Texture2D" uid="uid://bkn72k5bh03l2" path="res://assets/sprites/Characters/boss_gob/boss_gob_walk.png" id="1_tmy42"]
-[ext_resource type="Script" path="res://scripts/Entities/GremloidBoss.cs" id="1_u0njj"]
+[ext_resource type="Script" path="res://scripts/Entities/BossGremloid/GremloidBoss.cs" id="1_vuh6g"]
 [ext_resource type="Texture2D" uid="uid://bug73umhkvi3k" path="res://assets/sprites/Characters/boss_gob/boss_gob_sword_swing.png" id="3_g0eli"]
 [ext_resource type="Texture2D" uid="uid://2yxokdjykxj5" path="res://assets/sprites/Characters/boss_gob/boss_gob_3hit.png" id="4_yehed"]
 [ext_resource type="Texture2D" uid="uid://bxhw3tiksqo78" path="res://assets/sprites/Characters/boss_gob/boss_gob_grab.png" id="5_omo0r"]
@@ -594,11 +594,11 @@ size = Vector2(54.375, 83)
 size = Vector2(51.5, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pgpl"]
-size = Vector2(122.438, 36.1875)
+size = Vector2(122.438, 28.0469)
 
 [node name="GremloidBoss" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
-script = ExtResource("1_u0njj")
+script = ExtResource("1_vuh6g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
@@ -612,7 +612,8 @@ position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_8ir7l")
 
 [node name="ThreeHitRange" type="Area2D" parent="."]
-position = Vector2(-55, -90)
+position = Vector2(-31, -82)
+scale = Vector2(0.620767, 0.950237)
 collision_layer = 0
 collision_mask = 2
 
@@ -643,15 +644,16 @@ debug_color = Color(0.791489, 0.409275, 0.343607, 0.42)
 
 [node name="SlapRange" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(-55, -85)
+position = Vector2(-53, -78)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlapRange"]
-position = Vector2(98.7813, 125)
+position = Vector2(97, 121)
 shape = SubResource("RectangleShape2D_0pgpl")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]
+visible = false
 position = Vector2(-28, -56)
 scale = Vector2(3, 3)
 

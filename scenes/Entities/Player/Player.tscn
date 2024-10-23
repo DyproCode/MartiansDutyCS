@@ -228,5 +228,7 @@ debug_color = Color(0.966904, 0, 0.477621, 0.42)
 
 [node name="PlayerKnockback" parent="States" instance=ExtResource("9_b6koe")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]

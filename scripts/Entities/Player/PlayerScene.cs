@@ -6,10 +6,6 @@ using MartiansDutyCS.scripts.Systems;
 
 public partial class PlayerScene : CharacterBody2D
 {
-	//Movement
-	private string _state = "walking";
-	
-	
 	public IState State = null;
 	private WalkingState _walkingState;
 	private IdleState _idleState;
@@ -18,6 +14,7 @@ public partial class PlayerScene : CharacterBody2D
 	
 	private bool _canShoot = true;
 	public bool _canRoll = true;
+	public Camera2D Camera2D;
 	
 	//Godot Objects
 	public AnimatedSprite2D _sprite;
@@ -39,6 +36,8 @@ public partial class PlayerScene : CharacterBody2D
 		_rollTimer = GetNode<Timer>("RollTimer");
 		_fireMarker = GetNode<Marker2D>("FireMarker");
 		_healthBar = GetNode<health_bar>("HealthBar");
+		Camera2D = GetNode<Camera2D>("Camera2D");
+		
 		HitArea = GetNode<Area2D>("HitArea");
 
 		_idleState = GetNode<IdleState>("States/PlayerIdle"); 
@@ -68,23 +67,12 @@ public partial class PlayerScene : CharacterBody2D
 		_fireMarker.GlobalPosition = new Vector2((float)(GlobalPosition.X + Math.Cos(_sprite.Rotation + Math.PI / 20) * 40),
 			(float)(GlobalPosition.Y + Math.Sin(_sprite.Rotation + Math.PI / 20) * 40));
 		
-		if (Input.IsActionPressed("SHOOT") && _state != "dashing")
-		{
-			Shoot();
-		}
-		
 		State.PhysicsUpdate();
-		
-		if (_state == "knockback")
-		{
-			Velocity = Vector2.FromAngle(_sprite.Rotation) * -2000;
-			_state = "walking";
-		}
 		
 		MoveAndSlide();
 	}
 	
-	private void Shoot()
+	public void Shoot()
 	{
 		if (_canShoot)
 		{
@@ -102,7 +90,7 @@ public partial class PlayerScene : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		Player.GetInstance().CurrentHealth -= damage;
-		SwitchState("knockback");
+		//SwitchState("knockback");
 		_healthBar.SetHealth(Player.GetInstance().CurrentHealth);
 		if (Player.GetInstance().CurrentHealth <= 0)
 		{
