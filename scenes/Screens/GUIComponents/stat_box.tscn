@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cae4fyawmxlhn"]
+
+[ext_resource type="FontFile" uid="uid://badfkev7ohi14" path="res://assets/fonts/rainyhearts.ttf" id="1_uiqn1"]
+
+[node name="StatBox" type="Control"]
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 3
+anchor_right = 0.075
+anchor_bottom = 0.033
+offset_bottom = 0.12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uiqn1")
+theme_override_font_sizes/font_size = 16
+text = "+ 1"

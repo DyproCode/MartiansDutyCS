@@ -358,7 +358,7 @@ animations = [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_y7434")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xol50")
 }, {
 "duration": 1.5,
@@ -431,13 +431,13 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eh437")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v6y5d")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n3jsx")
 }, {
 "duration": 1.0,
@@ -585,16 +585,16 @@ animations = [{
 size = Vector2(18.0625, 63.1563)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6vnc"]
-radius = 39.0512
+radius = 48.6559
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hujgs"]
-size = Vector2(54.375, 83)
+size = Vector2(69, 68.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5qjm"]
-size = Vector2(51.5, 130)
+size = Vector2(27.75, 102.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pgpl"]
-size = Vector2(122.438, 28.0469)
+size = Vector2(36, 28)
 
 [node name="GremloidBoss" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
@@ -603,7 +603,7 @@ script = ExtResource("1_vuh6g")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_sxp5i")
-animation = &"walking"
+animation = &"three_hit_combo"
 autoplay = "walking"
 offset = Vector2(55, 0)
 
@@ -618,7 +618,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ThreeHitRange"]
-position = Vector2(70, 94)
+position = Vector2(77.3237, 93.6608)
+scale = Vector2(0.540202, 0.662328)
 shape = SubResource("CircleShape2D_i6vnc")
 debug_color = Color(0.654103, 0.516831, 0.0726074, 0.42)
 
@@ -628,7 +629,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSideSwipeRange"]
-position = Vector2(56.1875, 57.5)
+position = Vector2(67, 66.25)
 shape = SubResource("RectangleShape2D_hujgs")
 debug_color = Color(0.552069, 0.554276, 0.285346, 0.42)
 
@@ -638,7 +639,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightSideSwipeRange"]
-position = Vector2(106, 77)
+position = Vector2(117, 75.25)
 shape = SubResource("RectangleShape2D_m5qjm")
 debug_color = Color(0.791489, 0.409275, 0.343607, 0.42)
 
@@ -649,7 +650,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlapRange"]
-position = Vector2(97, 121)
+position = Vector2(155, 120)
 shape = SubResource("RectangleShape2D_0pgpl")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]

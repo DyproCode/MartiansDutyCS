@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://8nofjjvucy8i"]
+
+[ext_resource type="Texture2D" uid="uid://3dlcngsd78qp" path="res://assets/sprites/GUI/itemmenu.png" id="1_dfo2o"]
+[ext_resource type="PackedScene" uid="uid://cae4fyawmxlhn" path="res://scenes/Screens/GUIComponents/stat_box.tscn" id="2_bttdn"]
+
+[node name="StatsHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(69, 49.8406)
+rotation = 1.5708
+scale = Vector2(0.542437, 0.5)
+texture = ExtResource("1_dfo2o")
+
+[node name="IconContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 128.0
+offset_bottom = 88.0
+theme_override_constants/separation = 20
+
+[node name="LeftSideContainer" type="VBoxContainer" parent="IconContainer"]
+layout_mode = 2
+
+[node name="HealthBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="DamageBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="CritDamageBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="PierceBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="RightSideContainer" type="VBoxContainer" parent="IconContainer"]
+layout_mode = 2
+
+[node name="LuckBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="FireRateBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="MoveSpeedBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2
+
+[node name="AmourBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
+layout_mode = 2

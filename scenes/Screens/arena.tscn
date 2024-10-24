@@ -9868,4 +9868,4 @@ tile_set = SubResource("TileSet_jkxqg")
 [node name="UI" parent="." instance=ExtResource("4_prnu7")]
 
 [node name="GremloidBoss" parent="." instance=ExtResource("3_h7wwj")]
-position = Vector2(288, 242)
+position = Vector2(481, 291)
