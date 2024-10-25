@@ -3,6 +3,7 @@ using System;
 using MartiansDutyCS.scripts.Entities;
 using MartiansDutyCS.scripts.Entities.Player.PlayerStates;
 using MartiansDutyCS.scripts.Systems;
+using EventHandler = MartiansDutyCS.scripts.Systems.EventHandler;
 
 public partial class PlayerScene : CharacterBody2D
 {
@@ -47,7 +48,9 @@ public partial class PlayerScene : CharacterBody2D
 		
 		_healthBar.InitializeHealthBar(Player.GetInstance().MaxHealth);
 		_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
-		
+
+		EventHandler.GetInstance().
+			Connect(EventHandler.SignalName.OnPlayerMaxHealthIncrease, new Callable(this, nameof(OnMaxHealthIncrease)));
 		State = _idleState;
 	}
 
@@ -129,5 +132,11 @@ public partial class PlayerScene : CharacterBody2D
 	public void _on_roll_timer_timeout()
 	{
 		_canRoll = true;
+	}
+
+	private void OnMaxHealthIncrease()
+	{
+		_healthBar.SetMax(Player.GetInstance().MaxHealth);
+		_healthBar._damageBar.SetMax(Player.GetInstance().MaxHealth);
 	}
 }

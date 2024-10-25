@@ -7,7 +7,7 @@ public partial class HealthComponent : Node
 {
     public int MaxHealth;
     public int CurrentHealth;
-    private health_bar _healthBar;
+    public health_bar _healthBar;
 
     public void Initialize(int maxHealth)
     {

@@ -9,7 +9,10 @@ radius = 12.0
 script = ExtResource("1_ifxhn")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.3
+one_shot = true
+
+[node name="AttackBufferTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -21,3 +24,4 @@ shape = SubResource("CircleShape2D_aydmo")
 debug_color = Color(0.962005, 6.73831e-07, 0.507087, 0.42)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AttackBufferTimer" to="." method="_on_attack_buffer_timer_timeout"]

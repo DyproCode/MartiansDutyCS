@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://8nofjjvucy8i"]
+[gd_scene load_steps=12 format=3 uid="uid://8nofjjvucy8i"]
 
 [ext_resource type="Texture2D" uid="uid://3dlcngsd78qp" path="res://assets/sprites/GUI/itemmenu.png" id="1_dfo2o"]
+[ext_resource type="Script" path="res://scripts/GUIComponents/StatsHud.cs" id="1_v2g42"]
 [ext_resource type="PackedScene" uid="uid://cae4fyawmxlhn" path="res://scenes/Screens/GUIComponents/stat_box.tscn" id="2_bttdn"]
+[ext_resource type="Texture2D" uid="uid://i4itjh40h0gs" path="res://assets/sprites/statIcons/MD_ICON_HEALTH.png" id="3_y0rq0"]
+[ext_resource type="Texture2D" uid="uid://c7s3tnsca6lnd" path="res://assets/sprites/statIcons/MD_ICON_DAMAGE.png" id="4_i23ak"]
+[ext_resource type="Texture2D" uid="uid://beytwrcywifee" path="res://assets/sprites/statIcons/MD_ICON_CRIT2.png" id="5_ni42x"]
+[ext_resource type="Texture2D" uid="uid://ca2t3o1utp6bg" path="res://assets/sprites/statIcons/MD_ICON_PIERCE.png" id="6_oks11"]
+[ext_resource type="Texture2D" uid="uid://5ktsuc1myr8l" path="res://assets/sprites/statIcons/MD_ICON_LUCK.png" id="7_mnrgc"]
+[ext_resource type="Texture2D" uid="uid://rx02a3lut0e1" path="res://assets/sprites/statIcons/MD_ICON_ATTACKSPEED.png" id="8_uv20i"]
+[ext_resource type="Texture2D" uid="uid://cbuiyw6e4xl2n" path="res://assets/sprites/statIcons/MD_ICON_MOVESPEED.png" id="9_y30bf"]
+[ext_resource type="Texture2D" uid="uid://1eak6wlvgohg" path="res://assets/sprites/statIcons/MD_ICON_ARMOR.png" id="10_d62nj"]
 
 [node name="StatsHUD" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_v2g42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.658824)
 position = Vector2(69, 49.8406)
 rotation = 1.5708
 scale = Vector2(0.542437, 0.5)
@@ -26,27 +37,43 @@ layout_mode = 2
 
 [node name="HealthBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Health"
+Text = ExtResource("3_y0rq0")
 
 [node name="DamageBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Damage"
+Text = ExtResource("4_i23ak")
 
 [node name="CritDamageBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Crit Damage"
+Text = ExtResource("5_ni42x")
 
 [node name="PierceBox" parent="IconContainer/LeftSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Pierce"
+Text = ExtResource("6_oks11")
 
 [node name="RightSideContainer" type="VBoxContainer" parent="IconContainer"]
 layout_mode = 2
 
 [node name="LuckBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Luck"
+Text = ExtResource("7_mnrgc")
 
 [node name="FireRateBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Attack Speed"
+Text = ExtResource("8_uv20i")
 
 [node name="MoveSpeedBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Move Speed"
+Text = ExtResource("9_y30bf")
 
-[node name="AmourBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
+[node name="ArmourBox" parent="IconContainer/RightSideContainer" instance=ExtResource("2_bttdn")]
 layout_mode = 2
+tooltip_text = "Armour"
+Text = ExtResource("10_d62nj")

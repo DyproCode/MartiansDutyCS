@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using MartiansDutyCS.scripts.Entities;
 
 public partial class bullet : Area2D
 {
@@ -30,22 +31,19 @@ public partial class bullet : Area2D
             QueueFree();
         }
     }
-
-    private void _on_body_entered(Node2D body)
+    
+    private void _on_area_entered(Area2D area2D)
     {
-        if (body.GetGroups().Count(g => g == _target_group) > 0)
+        if (area2D.GetParent() is BaseEnemy)
         {
-            if (body.HasMethod("TakeDamage"))
+            var parent = area2D.GetParent() as BaseEnemy;
+            
+            if (parent.FindChild("HealthComponent") != null)
             {
-                body.Call("TakeDamage", _damage);
-            }
-           
-            if (body.FindChild("HealthComponent") != null)
-            {
-                body.FindChild("HealthComponent").Call("TakeDamage", _damage);
+                parent.FindChild("HealthComponent").Call("TakeDamage", _damage);
             }
         }
-        
+
         QueueFree();
     }
 }

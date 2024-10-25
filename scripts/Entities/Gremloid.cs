@@ -9,15 +9,16 @@ using MartiansDutyCS.scripts.Systems;
 public partial class Gremloid : BaseEnemy
 {
     //Health
-    public static int MaxHealth = 5;
+    public static int MaxHealth = 100;
     public static float Speed = 170;
-    public static int MoneyDrop = 5;
+    public static int MoneyDrop = 100;
     
     public override void _Ready()
     {
-        this.Damage = 1;
+        this.Damage = 20;
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
+        HitArea = GetNode<Area2D>("HitArea");
         _healthComponent.Initialize(MaxHealth);
         
         Triggers.Add(

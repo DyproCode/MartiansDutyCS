@@ -34,7 +34,7 @@ public class RapidFire : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerFireRate(0.03)
+                new EffectIncreasePlayerFireRate(0.2)
             })
         };
     }

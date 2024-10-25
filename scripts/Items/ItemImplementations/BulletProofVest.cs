@@ -20,7 +20,7 @@ public class BulletProofVest : IItem
 
     public void BuildDescription()
     {
-        _bulletProofVest.Description = "+2 Health";
+        _bulletProofVest.Description = "+40 Health";
     }
 
     public void BuildTexture()
@@ -34,7 +34,7 @@ public class BulletProofVest : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectGivePlayerMaxHealth(2)
+                new EffectGivePlayerMaxHealth(40)
             })
         };
     }

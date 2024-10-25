@@ -20,6 +20,9 @@ public partial class EventHandler : Node
 
     [Signal]
     public delegate void ItemAcquireEventHandler(Item acquiredItem);
+
+    [Signal]
+    public delegate void OnPlayerMaxHealthIncreaseEventHandler();
     
     private EventHandler()
     {

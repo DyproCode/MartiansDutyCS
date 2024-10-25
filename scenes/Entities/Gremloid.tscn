@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddjnd5x5j7jml"]
+[gd_scene load_steps=29 format=3 uid="uid://ddjnd5x5j7jml"]
 
 [ext_resource type="Texture2D" uid="uid://c87y04um0ad3r" path="res://assets/sprites/Characters/basic_goblin/goblin_walk_Sheet.png" id="1_l6ora"]
 [ext_resource type="Script" path="res://scripts/Entities/Gremloid.cs" id="1_o8777"]
@@ -158,6 +158,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1k18"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avdb6"]
+radius = 12.1655
 
 [node name="Gremloid" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_o8777")
@@ -177,4 +181,10 @@ shape = SubResource("CircleShape2D_w1k18")
 position = Vector2(-12, -18)
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_ekaoa")]
-position = Vector2(0, -1)
+position = Vector2(-1, -2)
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_avdb6")

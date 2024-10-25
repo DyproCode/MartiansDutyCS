@@ -4,7 +4,7 @@ using System;
 public partial class health_bar : ProgressBar
 {
     private Timer _timer;
-    private ProgressBar _damageBar;
+    public ProgressBar _damageBar;
     private int _health;
 
     public override void _Ready()
@@ -36,6 +36,11 @@ public partial class health_bar : ProgressBar
         Value = entityHealth;
         _damageBar.MaxValue = entityHealth;
         _damageBar.Value = entityHealth;
+    }
+
+    public void IncreaseMaxHealth(int newMax)
+    {
+        MaxValue = newMax;
     }
 
     private void _on_timer_timeout()

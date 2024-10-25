@@ -8,10 +8,16 @@ public class Player
 {
     //Game Attributes
     public int Money = 0;
+    
     public float Speed = 150;
     public double AttackSpeed = 0.35;
-    public int Damage = 1;
-    public int MaxHealth = 5;
+    public int Damage = 20;
+    public int MaxHealth = 100;
+    public int Luck = 0;
+    public int Pierce = 0;
+    public int Armour = 0;
+    public double CritDamage = 1.25;
+    
     public int CurrentHealth;
     private List<Item> _items = new List<Item>();
     
