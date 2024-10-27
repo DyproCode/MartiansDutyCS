@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 using MartiansDutyCS.scripts.Entities;
+using MartiansDutyCS.scripts.Systems;
 
 public partial class bullet : Area2D
 {
@@ -11,6 +12,7 @@ public partial class bullet : Area2D
     private float _distanceTraveled = 0;
     private string _target_group = "";
     private int _damage = 0;
+    private int _pierce = 0;
     public void Initialize(string targetGroup, int damage, float angle, Vector2 pos)
     {
         _target_group = targetGroup;
@@ -18,7 +20,12 @@ public partial class bullet : Area2D
         Position = pos;
         Rotation = angle;
     }
-    
+
+    public override void _Ready()
+    {
+        _pierce = Player.GetInstance().Pierce;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         var dir = Vector2.FromAngle(Rotation);
@@ -44,6 +51,11 @@ public partial class bullet : Area2D
             }
         }
 
-        QueueFree();
+        _pierce--;
+
+        if (_pierce <= 0)
+        {
+            QueueFree();
+        }
     }
 }

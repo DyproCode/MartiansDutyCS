@@ -161,30 +161,27 @@ animations = [{
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_avdb6"]
-radius = 12.1655
+radius = 12.0
 
 [node name="Gremloid" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(1, 0)
 script = ExtResource("1_o8777")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 1)
+position = Vector2(4, 3)
 sprite_frames = SubResource("SpriteFrames_dvuaw")
-animation = &"attacking"
+animation = &"walking_full"
 autoplay = "walking_full"
-frame_progress = 0.802928
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_w1k18")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ddpbe")]
-position = Vector2(-12, -18)
+position = Vector2(-12, -19)
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_ekaoa")]
-position = Vector2(-1, -2)
 
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_avdb6")

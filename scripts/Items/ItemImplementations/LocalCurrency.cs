@@ -20,7 +20,7 @@ public class LocalCurrency : IItem
 
     public void BuildDescription()
     {
-        _localCurrency.Description = "+5$ on kill";
+        _localCurrency.Description = "+20$ on kill";
     }
 
     public void BuildTexture()
@@ -34,7 +34,7 @@ public class LocalCurrency : IItem
         {
             new Trigger(TriggerType.Die, new List<IEffect>
             {
-                new EffectIncreasePlayerMoney(5)
+                new EffectIncreasePlayerMoney(20)
             })
         };
     }

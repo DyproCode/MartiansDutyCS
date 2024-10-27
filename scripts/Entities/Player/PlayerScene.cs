@@ -81,8 +81,15 @@ public partial class PlayerScene : CharacterBody2D
 		{
 			var bulletInstance = _bulletPackedScene.Instantiate();
 			var newBullet = bulletInstance as bullet;
+
+			int critChance = GD.RandRange(1, 10);
+			int damage = Player.GetInstance().Damage;
+			if (critChance <= Player.GetInstance().Luck)
+			{
+				damage = (int)(damage * Player.GetInstance().CritDamage);
+			}
 			
-			newBullet.Initialize("Enemy", Player.GetInstance().Damage, _sprite.Rotation, _fireMarker.GlobalPosition);
+			newBullet.Initialize("Enemy", damage, _sprite.Rotation, _fireMarker.GlobalPosition);
 			
 			GetParent().AddChild(newBullet);
 			_canShoot = false;

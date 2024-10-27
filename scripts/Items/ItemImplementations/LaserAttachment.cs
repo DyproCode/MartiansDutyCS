@@ -1,46 +1,46 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Channels;
 using MartiansDutyCS.scripts.Effects;
 using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class SyringeClamp : IItem
+public class LaserAttachment : IItem
 {
-    private Item _syringeClamp;
+    private Item _laserAttachment;
     public void BuildItem()
     {
-        _syringeClamp = new Item();
+        _laserAttachment = new Item();
     }
 
     public void BuildName()
     {
-        _syringeClamp.ItemName = "Syringe Clamp";
+        _laserAttachment.ItemName = "Laser Attachment";
     }
 
     public void BuildDescription()
     {
-        _syringeClamp.Description = "+2 Damage";
+        _laserAttachment.Description = "+25% Crit Damage, +1 Pierce";
     }
 
     public void BuildTexture()
     {
-        _syringeClamp.Texture = AssetLoader.GetInstance().ITEM_SYRINGECLAMP;
+        _laserAttachment.Texture = AssetLoader.GetInstance().ITEM_LASERATTACHMENT;
     }
 
     public void BuildTriggers()
     {
-        _syringeClamp.Triggers = new List<Trigger>
+        _laserAttachment.Triggers = new List<Trigger>
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerAttack(20)
+                new EffectIncreasePierce(1),
+                new EffectIncreaseCritDamage(0.25)
             })
         };
     }
 
     public Item GetItem()
     {
-        return _syringeClamp;
+        return _laserAttachment;
     }
 }

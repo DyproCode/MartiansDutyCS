@@ -18,7 +18,9 @@ public class ItemFactory
           "BulletProofVest",
           "LocalCurrency",
           "RapidFire",
-          "GremloidSkull"
+          "GremloidSkull",
+          "GremloidFoot",
+          "LaserAttachment"
         };
     }
 
@@ -54,6 +56,15 @@ public class ItemFactory
         {
             return _itemDirector.BuildItem(new GremloidSkull());
         }
+        else if (itemName == "GremloidFoot")
+        {
+            return _itemDirector.BuildItem(new GremloidFoot());
+        }
+        else if (itemName == "LaserAttachment")
+        {
+            return _itemDirector.BuildItem(new LaserAttachment());
+        }
+        
         return null;
     }
 

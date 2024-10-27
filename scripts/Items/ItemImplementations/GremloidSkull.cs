@@ -34,7 +34,7 @@ public class GremloidSkull : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerAttack(4),
+                new EffectIncreasePlayerAttack(40),
                 new EffectDecreasePlayerFireRate(0.25)
             })
         };

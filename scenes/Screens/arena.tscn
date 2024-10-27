@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cyre77ux36jsf" path="res://scenes/Entities/Player/Player.tscn" id="1_4f1fg"]
 [ext_resource type="Texture2D" uid="uid://dxst6a2kkg6il" path="res://assets/sprites/Backgrounds/tile_sheet.png" id="1_eahek"]
 [ext_resource type="PackedScene" uid="uid://djhh4qdja7b40" path="res://scenes/Screens/ui.tscn" id="4_prnu7"]
-[ext_resource type="PackedScene" uid="uid://ddjnd5x5j7jml" path="res://scenes/Entities/Gremloid.tscn" id="4_ufi8i"]
+[ext_resource type="PackedScene" uid="uid://ddjnd5x5j7jml" path="res://scenes/Entities/Gremloid.tscn" id="4_xqttb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqo4j"]
 texture = ExtResource("1_eahek")
@@ -9867,5 +9867,5 @@ tile_set = SubResource("TileSet_jkxqg")
 
 [node name="UI" parent="." instance=ExtResource("4_prnu7")]
 
-[node name="Gremloid" parent="." instance=ExtResource("4_ufi8i")]
-position = Vector2(562, 327)
+[node name="Gremloid" parent="." instance=ExtResource("4_xqttb")]
+position = Vector2(472, 254)

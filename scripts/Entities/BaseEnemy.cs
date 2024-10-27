@@ -12,5 +12,4 @@ public partial class BaseEnemy : CharacterBody2D
     public List<Trigger> Triggers = new List<Trigger>();
     public int Damage = 0;
     public string State = "walking";
-
 }

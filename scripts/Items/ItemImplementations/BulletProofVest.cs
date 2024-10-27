@@ -34,7 +34,7 @@ public class BulletProofVest : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectGivePlayerMaxHealth(40)
+                new EffectGivePlayerMaxHealth(40), 
             })
         };
     }

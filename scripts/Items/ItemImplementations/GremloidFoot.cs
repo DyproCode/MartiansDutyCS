@@ -1,46 +1,46 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Channels;
 using MartiansDutyCS.scripts.Effects;
 using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class SyringeClamp : IItem
+public class GremloidFoot : IItem
 {
-    private Item _syringeClamp;
+    private Item _gremloidFoot;
     public void BuildItem()
     {
-        _syringeClamp = new Item();
+        _gremloidFoot = new Item();
     }
 
     public void BuildName()
     {
-        _syringeClamp.ItemName = "Syringe Clamp";
+        _gremloidFoot.ItemName = "Gremloid Foot";
     }
 
     public void BuildDescription()
     {
-        _syringeClamp.Description = "+2 Damage";
+        _gremloidFoot.Description = "Speed +20, Luck +2";
     }
 
     public void BuildTexture()
     {
-        _syringeClamp.Texture = AssetLoader.GetInstance().ITEM_SYRINGECLAMP;
+        _gremloidFoot.Texture = AssetLoader.GetInstance().ITEM_GREMLOIDFOOT;
     }
 
     public void BuildTriggers()
     {
-        _syringeClamp.Triggers = new List<Trigger>
+        _gremloidFoot.Triggers = new List<Trigger>
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerAttack(20)
+                new EffectIncreaseSpeed(20),
+                new EffectIncreaseLuck(2)
             })
         };
     }
 
     public Item GetItem()
     {
-        return _syringeClamp;
+        return _gremloidFoot;
     }
 }
