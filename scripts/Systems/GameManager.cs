@@ -6,6 +6,7 @@ public partial class GameManager : Node
 {
     private static GameManager _gameManager = null;
     private int _round = 1;
+    private int _section = 1;
     private GameManager() { }
 
     public static GameManager GetInstance()
@@ -27,5 +28,10 @@ public partial class GameManager : Node
     public int GetRound()
     {
         return _round;
+    }
+
+    public int GetSection()
+    {
+        return _section;
     }
 }
