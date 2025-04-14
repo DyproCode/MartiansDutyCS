@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=3 uid="uid://cm6dxhtejdrmg"]
+
+[ext_resource type="Texture2D" uid="uid://dq6mo8vbfsl1q" path="res://assets/sprites/Backgrounds/game_over_Sheet.png" id="1_dqrlq"]
+[ext_resource type="Script" path="res://scripts/GUIComponents/GameOverScene.cs" id="1_eskyl"]
+[ext_resource type="Theme" uid="uid://b5oxyngm4g174" path="res://themes/pause_menu.tres" id="2_rosyr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrmck"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlyex"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk2ki"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d0f0"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bw6k"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1rsc"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sc5g"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfl8f"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(3360, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eugcb"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(3840, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nr5j"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(4320, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc7rf"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(4800, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6p7n"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(5280, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27uq1"]
+atlas = ExtResource("1_dqrlq")
+region = Rect2(5760, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a6jwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrmck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlyex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk2ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d0f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bw6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1rsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sc5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfl8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eugcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nr5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc7rf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6p7n")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_27uq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="GameOverScene" type="Node2D"]
+script = ExtResource("1_eskyl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 180.5)
+scale = Vector2(1.33333, 1.32963)
+sprite_frames = SubResource("SpriteFrames_a6jwy")
+autoplay = "default"
+frame_progress = 0.906167
+
+[node name="TryAgainBtn" type="Button" parent="."]
+offset_left = 264.0
+offset_top = 256.0
+offset_right = 376.0
+offset_bottom = 288.0
+theme = ExtResource("2_rosyr")
+text = "Try Again
+"
+
+[node name="QuitBtn" type="Button" parent="."]
+offset_left = 264.0
+offset_top = 296.0
+offset_right = 376.0
+offset_bottom = 328.0
+theme = ExtResource("2_rosyr")
+text = "Quit"
+
+[connection signal="pressed" from="TryAgainBtn" to="." method="_on_try_again_btn_pressed"]
+[connection signal="pressed" from="QuitBtn" to="." method="_on_quit_btn_pressed"]
