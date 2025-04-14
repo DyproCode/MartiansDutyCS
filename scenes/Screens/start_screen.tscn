@@ -48,6 +48,15 @@ theme_override_fonts/font = ExtResource("4_6kvj6")
 theme_override_font_sizes/font_size = 30
 text = "START"
 
+[node name="ResumeBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_vrfhl")
+theme_override_colors/font_color = Color(0.0705882, 0.772549, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("4_6kvj6")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
 [node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -80,5 +89,6 @@ text = "Debug
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="ArenaBtn" to="." method="_on_arena_btn_pressed"]

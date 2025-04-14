@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://kq35ydd76sqk" path="res://assets/sprites/misc/laser_bullet.png" id="2_jpnom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rsks"]
-size = Vector2(11.75, 5.5)
+size = Vector2(12, 4)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_d6xqk")
@@ -15,7 +15,7 @@ texture = ExtResource("2_jpnom")
 offset = Vector2(-17, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.875, 0)
+position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_1rsks")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

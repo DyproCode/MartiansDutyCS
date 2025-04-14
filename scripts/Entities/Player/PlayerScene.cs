@@ -51,16 +51,18 @@ public partial class PlayerScene : CharacterBody2D
 
 		EventHandler.GetInstance().
 			Connect(EventHandler.SignalName.OnPlayerMaxHealthIncrease, new Callable(this, nameof(OnMaxHealthIncrease)));
+		
+		EventHandler.GetInstance().
+			Connect(EventHandler.SignalName.OnPlayerHeal, new Callable(this, nameof(OnHeal)));
+		
+		EventHandler.GetInstance()
+			.Connect(EventHandler.SignalName.StartOfRound, new Callable(this, nameof(OnStartOfRound)));
+		
 		State = _idleState;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustReleased("DEBUG_INCREMENT_ROUND"))
-		{
-			GameManager.GetInstance().IncreaseRound();
-		}
-
 		if (_fireRate.IsStopped() && _fireRate.WaitTime != Player.GetInstance().AttackSpeed)
 		{
 			_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
@@ -100,10 +102,10 @@ public partial class PlayerScene : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		Player.GetInstance().CurrentHealth -= damage;
-		//SwitchState("knockback");
 		_healthBar.SetHealth(Player.GetInstance().CurrentHealth);
 		if (Player.GetInstance().CurrentHealth <= 0)
 		{
+			GameManager.GetInstance().GameSessionData.ClearData();
 			GetTree().Quit();
 		}
 	}
@@ -112,7 +114,6 @@ public partial class PlayerScene : CharacterBody2D
 	{
 		_canShoot = true;
 	}
-	
 	
 	public void SwitchState(string state)
 	{
@@ -141,9 +142,20 @@ public partial class PlayerScene : CharacterBody2D
 		_canRoll = true;
 	}
 
+	//Fix this
 	private void OnMaxHealthIncrease()
 	{
 		_healthBar.SetMax(Player.GetInstance().MaxHealth);
 		_healthBar._damageBar.SetMax(Player.GetInstance().MaxHealth);
+	}
+
+	private void OnHeal()
+	{
+		_healthBar.SetHealth(Player.GetInstance().CurrentHealth);
+	}
+
+	private void OnStartOfRound()
+	{
+		GameManager.GetInstance().GameSessionData.SaveJsonData(Player.GetInstance().GetItemNames(), Player.GetInstance().Money, GameManager.GetInstance().GetRound(), GlobalPosition.X, GlobalPosition.Y);
 	}
 }

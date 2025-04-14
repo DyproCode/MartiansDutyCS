@@ -179,6 +179,7 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_27c18"]
+radius = 9.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -198,7 +199,7 @@ wait_time = 0.35
 one_shot = true
 
 [node name="FireMarker" type="Marker2D" parent="."]
-position = Vector2(13, 5)
+position = Vector2(9, 4)
 
 [node name="RollTimer" type="Timer" parent="."]
 one_shot = true
@@ -211,7 +212,7 @@ offset_bottom = -10.0
 
 [node name="HitArea" type="Area2D" parent="."]
 physics_interpolation_mode = 2
-collision_layer = 2
+collision_layer = 6
 collision_mask = 0
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
@@ -229,6 +230,7 @@ debug_color = Color(0.966904, 0, 0.477621, 0.42)
 [node name="PlayerKnockback" parent="States" instance=ExtResource("9_b6koe")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.25, 1.25)
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]

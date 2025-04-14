@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using MartiansDutyCS.scripts.Items.ItemImplementations;
 
@@ -20,7 +21,9 @@ public class ItemFactory
           "RapidFire",
           "GremloidSkull",
           "GremloidFoot",
-          "LaserAttachment"
+          "LaserAttachment",
+          "VampRounds",
+          "GremloidHand"
         };
     }
 
@@ -64,6 +67,14 @@ public class ItemFactory
         {
             return _itemDirector.BuildItem(new LaserAttachment());
         }
+        else if (itemName == "VampRounds")
+        {
+            return _itemDirector.BuildItem(new VampRounds());
+        }
+        else if (itemName == "GremloidHand")
+        {
+            return _itemDirector.BuildItem(new GremloidHand());
+        }
         
         return null;
     }
@@ -71,12 +82,14 @@ public class ItemFactory
     public List<Item> CreateXItems(int numItems)
     {
         List<Item> randomItems = new List<Item>();
-
+        List<string> itemPool = _itemNames.ToList();
+       
         for (int i = 0; i < numItems; i++)
         {
-            int randomIndex = GD.RandRange(0, _itemNames.Count - 1);
+            int randomIndex = GD.RandRange(0, itemPool.Count - 1);
             
-            randomItems.Add(CreateSpecificItem(_itemNames[randomIndex]));
+            randomItems.Add(CreateSpecificItem(itemPool[randomIndex]));
+            itemPool.RemoveAt(randomIndex);
         }
         
         return randomItems;

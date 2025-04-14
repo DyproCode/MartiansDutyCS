@@ -14,7 +14,7 @@ public class LaserAttachment : IItem
 
     public void BuildName()
     {
-        _laserAttachment.ItemName = "Laser Attachment";
+        _laserAttachment.ItemName = "LaserAttachment";
     }
 
     public void BuildDescription()

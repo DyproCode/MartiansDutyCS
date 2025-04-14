@@ -17,7 +17,6 @@ public class Player
     public int Pierce = 0;
     public int Armour = 0;
     public double CritDamage = 1.25;
-    
     public int CurrentHealth;
     private List<Item> _items = new List<Item>();
     
@@ -40,8 +39,6 @@ public class Player
 
     public void GivePlayerItem(Item item)
     {
-        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
-
         if (_items.Any(i => i.ItemName == item.ItemName))
         {
             _items.Find(i => i.ItemName == item.ItemName).Amount++;
@@ -49,6 +46,30 @@ public class Player
         else
         {
             _items.Add(item);
+        }
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
+    }
+
+    public void RemovePlayerItem(string itemName)
+    {
+        var item = _items.FirstOrDefault(i => i.ItemName == itemName);
+        
+        if (item.Amount > 1)
+        {
+            item.Amount--; 
+        }
+        else
+        {
+            _items.Remove(item);
+        }
+    }
+
+    public void GivePlayerItemsString(List<string> items)
+    {
+        foreach (var item in items)
+        {
+            var itemObj = ItemFactory.GetInstance().CreateSpecificItem(item);
+            GivePlayerItem(itemObj);
         }
     }
 
@@ -66,5 +87,19 @@ public class Player
     {
         return _items;
     }
-    
+
+    public List<string> GetItemNames()
+    {
+        var itemNames = new List<string>();
+
+        foreach (var item in _items)
+        {
+            for (int i = 0; i < item.Amount; i++)
+            {
+                itemNames.Add(item.ItemName);
+            }
+        }
+        
+        return itemNames;
+    }
 }

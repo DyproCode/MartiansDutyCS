@@ -5,42 +5,42 @@ using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class RapidFire : IItem
+public class GremloidHand : IItem
 {
-    private Item _rapidFire;
+    private Item _gremloidHand;
     public void BuildItem()
     {
-        _rapidFire = new Item();
+        _gremloidHand = new Item();
     }
 
     public void BuildName()
     {
-        _rapidFire.ItemName = "RapidFire";
+        _gremloidHand.ItemName = "GremloidHand";
     }
 
     public void BuildDescription()
     {
-        _rapidFire.Description = "Increase Attack Speed";
+        _gremloidHand.Description = "+4 Luck";
     }
 
     public void BuildTexture()
     {
-        _rapidFire.Texture = AssetLoader.GetInstance().ITEM_RAPIDFIRE;
+        _gremloidHand.Texture = AssetLoader.GetInstance().ITEM_GREMLOIDHAND;
     }
 
     public void BuildTriggers()
     {
-        _rapidFire.Triggers = new List<Trigger>
+        _gremloidHand.Triggers = new List<Trigger>
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerFireRate(1.25)
+                new EffectIncreaseLuck(4)
             })
         };
     }
 
     public Item GetItem()
     {
-        return _rapidFire;
+        return _gremloidHand;
     }
 }

@@ -7,7 +7,13 @@ public abstract partial class StatusEffect : Node
     private double _tickRate;
     private double _duration;
     private double _timeEffected;
+    protected Node _target;
 
+    public StatusEffect(Node node)
+    {
+        _target = node;
+    }
+    
     public void ApplyStatus(float delta)
     {
         _timeEffected += delta;

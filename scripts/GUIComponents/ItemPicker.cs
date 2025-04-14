@@ -29,6 +29,7 @@ public partial class ItemPicker : Control
     public void OnItemSelected(Item selectedItem)
     {
         Player.GetInstance().GivePlayerItem(selectedItem);
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.StartOfRound);
         Hide();
     }
 }

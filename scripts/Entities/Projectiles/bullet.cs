@@ -39,6 +39,8 @@ public partial class bullet : Area2D
         }
     }
     
+    
+    //Probably the reason that can't hit close gremloid. on_area_entered probably doesn't trigger if the thing spawns inside the area
     private void _on_area_entered(Area2D area2D)
     {
         if (area2D.GetParent() is BaseEnemy)
@@ -50,12 +52,12 @@ public partial class bullet : Area2D
                 parent.FindChild("HealthComponent").Call("TakeDamage", _damage);
             }
         }
-
-        _pierce--;
-
+        
         if (_pierce <= 0)
         {
             QueueFree();
         }
+        
+        _pierce--;
     }
 }

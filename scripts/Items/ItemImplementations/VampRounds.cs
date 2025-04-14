@@ -5,42 +5,42 @@ using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class RapidFire : IItem
+public class VampRounds : IItem
 {
-    private Item _rapidFire;
+    private Item _vampRounds;
     public void BuildItem()
     {
-        _rapidFire = new Item();
+        _vampRounds = new Item();
     }
 
     public void BuildName()
     {
-        _rapidFire.ItemName = "RapidFire";
+        _vampRounds.ItemName = "VampRounds";
     }
 
     public void BuildDescription()
     {
-        _rapidFire.Description = "Increase Attack Speed";
+        _vampRounds.Description = "5 Health On Hit";
     }
 
     public void BuildTexture()
     {
-        _rapidFire.Texture = AssetLoader.GetInstance().ITEM_RAPIDFIRE;
+        _vampRounds.Texture = AssetLoader.GetInstance().ITEM_VAMPROUNDS;
     }
 
     public void BuildTriggers()
     {
-        _rapidFire.Triggers = new List<Trigger>
+        _vampRounds.Triggers = new List<Trigger>
         {
-            new Trigger(TriggerType.OnAcquire, new List<IEffect>
+            new Trigger(TriggerType.OnHit, new List<IEffect>
             {
-                new EffectIncreasePlayerFireRate(1.25)
+                new EffectHealPlayer(5)
             })
         };
     }
 
     public Item GetItem()
     {
-        return _rapidFire;
+        return _vampRounds;
     }
 }

@@ -8,4 +8,11 @@
   <ItemGroup>
     <Compile Remove="scripts\GameManager.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\GameFiles\GameSessionData.json" />
+    <Content Include="scripts\GameFiles\GameData.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

@@ -14,6 +14,9 @@ public partial class EventHandler : Node
 
     [Signal]
     public delegate void EndOfRoundEventHandler();
+    
+    [Signal]
+    public delegate void StartOfRoundEventHandler();
 
     [Signal]
     public delegate void ItemSelectedEventHandler(Item selectedItem);
@@ -24,10 +27,17 @@ public partial class EventHandler : Node
     [Signal]
     public delegate void OnPlayerMaxHealthIncreaseEventHandler();
     
+    [Signal]
+    public delegate void OnPlayerHealEventHandler();
+    
+    [Signal]
+    public delegate void OnHitEventHandler();
+    
     private EventHandler()
     {
         Connect(SignalName.EnemyDies, new Callable(this, nameof(OnEnemyDies)));
         Connect(SignalName.ItemAcquire, new Callable(this, nameof(OnItemAcquire)));
+        Connect(SignalName.OnHit, new Callable(this, nameof(OnOnHit)));
     }
     
     private void OnEnemyDies(BaseEnemy enemy)
@@ -62,6 +72,20 @@ public partial class EventHandler : Node
             }
         }
     }
+
+    private void OnOnHit()
+    {
+        foreach (var item in Player.GetInstance().GetItems())
+        {
+            foreach (var trigger in item.Triggers)
+            {
+                if (trigger.TriggerType == TriggerType.OnHit)
+                {
+                    trigger.Execute();
+                }
+            }
+        }
+    }
     
     public static EventHandler GetInstance()
     {
@@ -72,4 +96,6 @@ public partial class EventHandler : Node
         
         return _eventHandler;
     }
+    
+    
 }

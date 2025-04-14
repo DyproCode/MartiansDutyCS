@@ -14,7 +14,7 @@ public class GremloidFoot : IItem
 
     public void BuildName()
     {
-        _gremloidFoot.ItemName = "Gremloid Foot";
+        _gremloidFoot.ItemName = "GremloidFoot";
     }
 
     public void BuildDescription()
