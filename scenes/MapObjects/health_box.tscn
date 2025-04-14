@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjeqptjdib5t0"]
+
+[ext_resource type="Script" path="res://scripts/MapObjects/HealthBox.cs" id="1_fmqiq"]
+[ext_resource type="Texture2D" uid="uid://dts4wqdifybdq" path="res://assets/sprites/Terrain/HealthBox.png" id="1_gg3g2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdqpc"]
+size = Vector2(28.5, 28.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppxub"]
+size = Vector2(52, 52.25)
+
+[node name="HealthBox" type="StaticBody2D"]
+script = ExtResource("1_fmqiq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_gg3g2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_tdqpc")
+
+[node name="PurchaseArea" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 4
+
+[node name="PurchaseCollision" type="CollisionShape2D" parent="PurchaseArea"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_ppxub")
+debug_color = Color(0.842, 0.225401, 0.762262, 0.42)
+
+[node name="PurchaseLabel" type="Label" parent="."]
+visible = false
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 163.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 12
+text = "Heal to full for $2500!"

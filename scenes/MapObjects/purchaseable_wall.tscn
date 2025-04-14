@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://samtrrig4bbl"]
+
+[ext_resource type="Texture2D" uid="uid://dffuwq5c68afa" path="res://assets/sprites/Terrain/wall.png" id="1_oqbhm"]
+[ext_resource type="Script" path="res://scripts/MapObjects/PurchaseableWall.cs" id="1_tc0q1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diisv"]
+size = Vector2(25, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0yuo"]
+size = Vector2(34, 66)
+
+[node name="PurchaseableWall" type="StaticBody2D"]
+script = ExtResource("1_tc0q1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_diisv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 32)
+texture = ExtResource("1_oqbhm")
+
+[node name="PurchaseArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="PurchaseCollision" type="CollisionShape2D" parent="PurchaseArea"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_w0yuo")
+debug_color = Color(0.842, 0.225401, 0.762262, 0.42)
+
+[node name="PurchaseLabel" type="Label" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 11
+text = "Remove for $1000"

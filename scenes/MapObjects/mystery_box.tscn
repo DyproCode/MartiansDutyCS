@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4kos0fv3xww7"]
+
+[ext_resource type="Script" path="res://scripts/MapObjects/MysteryBox.cs" id="1_cfpfm"]
+[ext_resource type="Texture2D" uid="uid://t7whdipgo5go" path="res://assets/sprites/Terrain/MysteryBox.png" id="1_r5cor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_natg7"]
+size = Vector2(29, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3gch"]
+size = Vector2(52, 52.25)
+
+[node name="MysteryBox" type="StaticBody2D"]
+script = ExtResource("1_cfpfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_r5cor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_natg7")
+
+[node name="PurchaseArea" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 4
+
+[node name="PurchaseCollision" type="CollisionShape2D" parent="PurchaseArea"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_m3gch")
+debug_color = Color(0.842, 0.225401, 0.762262, 0.42)
+
+[node name="PurchaseLabel" type="Label" parent="."]
+visible = false
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 163.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 12
+text = "Get a random item for $2000!"

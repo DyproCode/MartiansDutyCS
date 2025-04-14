@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://x2h5xhba6keb"]
+
+[ext_resource type="Script" path="res://scripts/MapObjects/Spawner.cs" id="1_p6p6x"]
+[ext_resource type="Texture2D" uid="uid://desfn7jm2bw06" path="res://assets/sprites/Terrain/spawner.png" id="2_pkei3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8f6x"]
+size = Vector2(66, 24)
+
+[node name="spawner" type="Node2D"]
+script = ExtResource("1_p6p6x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(32, 16)
+texture = ExtResource("2_pkei3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(32, 12)
+shape = SubResource("RectangleShape2D_a8f6x")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 32)
