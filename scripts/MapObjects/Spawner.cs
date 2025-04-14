@@ -17,7 +17,7 @@ public partial class Spawner : Node2D
 	{
 		var newGremloid = GREMLOID.Instantiate() as Gremloid;
 		newGremloid.GlobalPosition = _spawnPoint.GlobalPosition;	
-		GetTree().Root.AddChild(newGremloid);
+		GetTree().GetCurrentScene().AddChild(newGremloid);
 	}
 	
 }

@@ -27,6 +27,21 @@ public class Player
         CurrentHealth = MaxHealth;
     }
 
+    public void ResetPlayer()
+    {
+         Money = 0;
+         Speed = 150;
+         AttackSpeed = 0.35;
+         Damage = 20;
+         MaxHealth = 100;
+         Luck = 0;
+         Pierce = 0;
+         Armour = 0;
+         CritDamage = 1.25;
+         CurrentHealth = MaxHealth;
+         _items = new List<Item>();
+    }
+
     public static Player GetInstance()
     {
         if (_player == null)

@@ -105,8 +105,7 @@ public partial class PlayerScene : CharacterBody2D
 		_healthBar.SetHealth(Player.GetInstance().CurrentHealth);
 		if (Player.GetInstance().CurrentHealth <= 0)
 		{
-			GameManager.GetInstance().GameSessionData.ClearData();
-			GetTree().Quit();
+			GetTree().ChangeSceneToFile("res://scenes/Screens/game_over_scene.tscn");
 		}
 	}
 	

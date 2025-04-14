@@ -66,7 +66,13 @@ public partial class Gremloid : BaseEnemy
 
     public override void _Process(double delta)
     {
-        var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
+        var player = GetTree().GetNodesInGroup("Player").FirstOrDefault() as PlayerScene;
+
+        if (player == null)
+        {
+            return;
+        }
+        
         _sprite.LookAt(player.GlobalPosition);
         if (State == "walking" && GlobalPosition.DistanceTo(player.GlobalPosition) > 25)
         { 

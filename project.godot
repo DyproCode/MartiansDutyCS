@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="MartiansDutyCS"
+config/name="MartiansDuty"
 run/main_scene="res://scenes/Screens/start_screen.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/misc/Martians-duty-logo.png"
 
 [display]
 
@@ -22,6 +22,7 @@ window/size/viewport_height=360
 window/size/mode=3
 window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/sprites/GUI/cursor.png"
 
 [dotnet]
 

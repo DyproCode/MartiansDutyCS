@@ -16,6 +16,12 @@ public partial class GameManager : Node
             .Connect(EventHandler.SignalName.StartOfRound, new Callable(this, nameof(OnStartOfRound)));
     }
 
+    public void ResetGame()
+    {
+        _round = 0;
+        _section = 1;
+    }
+
     public static GameManager GetInstance()
     {
         if (_gameManager == null)

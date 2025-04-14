@@ -1,0 +1,24 @@
+﻿//TODO:
+//--------------------------------------- 
+// Change what happens after player dies 
+// - Die animation and particle effects
+// - Go back to main screen
+// - Reset all game data, clear save file 
+//-----------------------------------------
+// Redo map
+// - Make sure that pathfinding works (maybe make a small map to test)
+// - Try and consult Keanu/Ashton about what the map needs to look like
+// - Add Boss in at the end of the game
+//----------------------------------------------------------------------
+// Implement more items
+// - Try and use all the art that Ashton made.
+// - Maybe add space rare item box for late game
+//-------------------------------------------------
+// Implement Sounds
+// - Add music
+// - Add sound effects
+//----------------------------------
+// Implement Die Effects on monsters
+// - Create new scene for characters dying and create an instance once something dies
+// - Add death sound
+//-----------------------------------------------------------

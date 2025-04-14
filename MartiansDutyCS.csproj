@@ -11,6 +11,7 @@
   <ItemGroup>
     <Content Include="scripts\GameFiles\GameSessionData.json" />
     <Content Include="scripts\GameFiles\GameData.json" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

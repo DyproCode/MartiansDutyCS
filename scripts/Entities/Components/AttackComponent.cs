@@ -19,11 +19,15 @@ public partial class AttackComponent : Node
         _attackTimer = GetNode<Timer>("AttackTimer");
         _bufferTimer = GetNode<Timer>("AttackBufferTimer");
         
-        _target = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
+        _target = GetTree().GetNodesInGroup("Player").FirstOrDefault() as PlayerScene;
     }
 
     public override void _Process(double delta)
     {
+        if (!IsInstanceValid(_area2D) || !IsInstanceValid(_target))
+        {
+            return;
+        }
         
         if (_area2D.OverlapsArea(_target.HitArea) && _attackTimer.IsStopped())
         {
@@ -45,6 +49,11 @@ public partial class AttackComponent : Node
 
     private void _on_attack_buffer_timer_timeout()
     {
+        if (!IsInstanceValid(_area2D) || !IsInstanceValid(_target.HitArea))
+        {
+            return;
+        }        
+        
         if (_area2D.OverlapsArea(_target.HitArea))
         {
             Attack();
