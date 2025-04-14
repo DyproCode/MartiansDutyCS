@@ -39,6 +39,9 @@ public class Player
 
     public void GivePlayerItem(Item item)
     {
+        //This must be first or else item bar won't work!
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
+        
         if (_items.Any(i => i.ItemName == item.ItemName))
         {
             _items.Find(i => i.ItemName == item.ItemName).Amount++;
@@ -47,7 +50,6 @@ public class Player
         {
             _items.Add(item);
         }
-        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.ItemAcquire, item);
     }
 
     public void RemovePlayerItem(string itemName)
