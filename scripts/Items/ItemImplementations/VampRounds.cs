@@ -20,7 +20,7 @@ public class VampRounds : IItem
 
     public void BuildDescription()
     {
-        _vampRounds.Description = "5 Health On Hit";
+        _vampRounds.Description = "2 Health On Hit";
     }
 
     public void BuildTexture()
@@ -34,7 +34,7 @@ public class VampRounds : IItem
         {
             new Trigger(TriggerType.OnHit, new List<IEffect>
             {
-                new EffectHealPlayer(5)
+                new EffectHealPlayer(2)
             })
         };
     }

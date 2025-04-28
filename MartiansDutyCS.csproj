@@ -9,6 +9,7 @@
     <Compile Remove="scripts\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Attributions.txt" />
     <Content Include="scripts\GameFiles\GameSessionData.json" />
     <Content Include="scripts\GameFiles\GameData.json" />
     <Content Include="TODO.txt" />

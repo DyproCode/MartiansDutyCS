@@ -1,4 +1,5 @@
 ﻿using Godot;
+using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Entities.Player.PlayerStates;
 
@@ -20,7 +21,8 @@ public partial class DashingState : Node, IState
         _player._sprite.Animation = "dashing";
         _player._rollTimer.Start();
         _player._canRoll = false;
-        _dashDir = Vector2.FromAngle(_player._sprite.Rotation);
+        _dashDir = Input.GetVector("LEFT", "RIGHT", "UP", "DOWN");
+        AudioManager.GetInstance().PlaySound("res://assets/sounds/teleport.wav", Systems.Player.GetInstance().GetPlayerScene(), volume: -9);
     }
 
     public void Exit()

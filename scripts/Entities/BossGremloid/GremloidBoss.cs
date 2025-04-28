@@ -9,9 +9,9 @@ using MartiansDutyCS.scripts.Systems;
 public partial class GremloidBoss : BaseEnemy
 {
     //Health
-    public static int MaxHealth = 40;
+    public static int MaxHealth = 1000;
     public static float Speed = 70;
-    public static int MoneyDrop = 100;
+    public static int MoneyDrop = 1000;
 
     public Area2D _threeHitRange;
     public Area2D _leftSwipeRange;
@@ -20,7 +20,7 @@ public partial class GremloidBoss : BaseEnemy
     
     public override void _Ready()
     {
-        this.Damage = 0;
+        this.Damage = 40;
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
 
@@ -45,6 +45,7 @@ public partial class GremloidBoss : BaseEnemy
         var player = GetTree().GetNodesInGroup("Player").First() as PlayerScene;
         if (State != "attacking")
         {
+            //_sprite.LookAt(player.GlobalPosition);
             Rotation = (float)Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(player.GlobalPosition).Angle(),
                 2.0f * delta);
             if (_threeHitRange.OverlapsArea(player.HitArea))
@@ -67,7 +68,18 @@ public partial class GremloidBoss : BaseEnemy
                 _sprite.Play("slap");
                 State = "attacking";
             }
-            
+        }
+
+        if (State == "attacking")
+        {
+            if (!_threeHitRange.OverlapsArea(player.HitArea)
+                && !_leftSwipeRange.OverlapsArea(player.HitArea) 
+                && !_rightSwipeRange.OverlapsArea(player.HitArea) && 
+                !_slapRange.OverlapsArea(player.HitArea))
+            {
+                State = "walking";
+                _sprite.Play("walking");
+            }
         }
         
         if (State == "walking")

@@ -1,24 +1,34 @@
 ﻿//TODO:
 //--------------------------------------- 
-// Change what happens after player dies 
-// - Die animation and particle effects
-// - Go back to main screen
-// - Reset all game data, clear save file 
+// Change what happens after player dies DONE
+// - Die animation and particle effects (Done)
+// - Go back to main screen (Done)
+// - Reset all game data, clear save file (Done)
+//-----------------------------------------------------------
+// Implement Sounds DONE
+// - Add music 
+		- Need Game over music (Done)
+// - Add sound effects 
+		- Need to add "add items" noise for everything that adds items (Done)
 //-----------------------------------------
-// Redo map
-// - Make sure that pathfinding works (maybe make a small map to test)
-// - Try and consult Keanu/Ashton about what the map needs to look like
-// - Add Boss in at the end of the game
+// Redo map DONE
+// - Make sure that pathfinding works (maybe make a small map to test) (Done)
+// - Try and consult Keanu/Ashton about what the map needs to look like (Done)
+// - Add Boss in at the end of the game (Done!)
 //----------------------------------------------------------------------
+// Implement Die Effects on monsters DONE
+// - Create new scene for characters dying and create an instance once something  (Done)
+// - Add death sound (Done)
+//----------------------------------
 // Implement more items
 // - Try and use all the art that Ashton made.
 // - Maybe add space rare item box for late game
 //-------------------------------------------------
-// Implement Sounds
-// - Add music
-// - Add sound effects
-//----------------------------------
-// Implement Die Effects on monsters
-// - Create new scene for characters dying and create an instance once something dies
-// - Add death sound
-//-----------------------------------------------------------
+//Gameplay notes:
+// - Invulnerability after being hit
+// - Spawn radius (Done)
+// - Fix map rocks to add obstacle 
+// - Add Pathfinding for boss
+// - Maybe polish some of the UI
+// - Fix gremloid speed 
+

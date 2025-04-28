@@ -10,6 +10,7 @@ public class ItemFactory
     private ItemDirector _itemDirector = new ItemDirector();
     private static ItemFactory _itemFactory;
     private static List<string> _itemNames;
+    private static List<string> _choasItemNames;
 
     private ItemFactory()
     {
@@ -23,7 +24,21 @@ public class ItemFactory
           "GremloidFoot",
           "LaserAttachment",
           "VampRounds",
-          "GremloidHand"
+          "GremloidHand",
+          "HoloWatch",
+          "Gremloidium",
+          "InterestOrb",
+          "GremloidOoze",
+          "HeavyRounds",
+          "HardenedGremloidium",
+          "GremloidEar",
+          "FourLeafClover"
+        };
+
+        _choasItemNames = new List<string>
+        {
+            "ChaosHourGlass",
+            "GoldenClover"
         };
     }
 
@@ -75,6 +90,46 @@ public class ItemFactory
         {
             return _itemDirector.BuildItem(new GremloidHand());
         }
+        else if (itemName == "HoloWatch")
+        {
+            return _itemDirector.BuildItem(new HoloWatch());
+        }
+        else if (itemName == "Gremloidium")
+        {
+            return _itemDirector.BuildItem(new Gremloidium());
+        }
+        else if (itemName == "InterestOrb")
+        {
+            return _itemDirector.BuildItem(new InterestOrb());
+        }
+        else if (itemName == "GremloidOoze")
+        {
+            return _itemDirector.BuildItem(new GremloidOoze());
+        }
+        else if (itemName == "HeavyRounds")
+        {
+            return _itemDirector.BuildItem(new HeavyRounds());
+        }
+        else if (itemName == "HardenedGremloidium")
+        {
+            return _itemDirector.BuildItem(new HardenedGremloidium());
+        }
+        else if (itemName == "GremloidEar")
+        {
+            return _itemDirector.BuildItem(new GremloidEar());
+        }
+        else if (itemName == "FourLeafClover")
+        {
+            return _itemDirector.BuildItem(new FourLeafClover());
+        }
+        else if (itemName == "GoldenClover")
+        {
+            return _itemDirector.BuildItem(new GoldenClover());
+        }
+        else if (itemName == "ChoasHourGlass")
+        {
+            return _itemDirector.BuildItem(new ChoasHourGlass());
+        }
         
         return null;
     }
@@ -93,5 +148,11 @@ public class ItemFactory
         }
         
         return randomItems;
+    }
+
+    public Item CreateChaosItem()
+    {
+        int randomIndex = GD.RandRange(0, _choasItemNames.Count - 1);
+        return CreateSpecificItem(_choasItemNames[randomIndex]);
     }
 }

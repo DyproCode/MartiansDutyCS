@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://c6yf268qav4kf"]
+[gd_scene load_steps=93 format=3 uid="uid://c6yf268qav4kf"]
 
 [ext_resource type="Texture2D" uid="uid://ce8mi3jc6eoen" path="res://assets/sprites/Characters/boss_gob/boss_gob_loop.png" id="1_7uejs"]
 [ext_resource type="Texture2D" uid="uid://c884bl5qsw8sx" path="res://assets/sprites/Characters/boss_gob/boss_gob_run.png" id="1_lsxum"]
@@ -582,7 +582,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ir7l"]
-size = Vector2(18.0625, 63.1563)
+size = Vector2(18.0625, 48)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6vnc"]
 radius = 48.6559
@@ -596,9 +596,17 @@ size = Vector2(27.75, 102.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pgpl"]
 size = Vector2(36, 28)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1i67e"]
+radius = 16.0
+height = 80.0
+
 [node name="GremloidBoss" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
 script = ExtResource("1_vuh6g")
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]
+position = Vector2(-32, -64)
+scale = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
@@ -608,7 +616,6 @@ autoplay = "walking"
 offset = Vector2(55, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_8ir7l")
 
 [node name="ThreeHitRange" type="Area2D" parent="."]
@@ -653,9 +660,12 @@ collision_mask = 2
 position = Vector2(155, 120)
 shape = SubResource("RectangleShape2D_0pgpl")
 
-[node name="HealthComponent" parent="." instance=ExtResource("8_pyg4v")]
-visible = false
-position = Vector2(-28, -56)
-scale = Vector2(3, 3)
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_1i67e")
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

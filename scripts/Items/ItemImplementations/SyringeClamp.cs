@@ -20,7 +20,7 @@ public class SyringeClamp : IItem
 
     public void BuildDescription()
     {
-        _syringeClamp.Description = "+2 Damage";
+        _syringeClamp.Description = "+10 Damage";
     }
 
     public void BuildTexture()
@@ -34,7 +34,7 @@ public class SyringeClamp : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerAttack(20)
+                new EffectIncreasePlayerAttack(10)
             })
         };
     }

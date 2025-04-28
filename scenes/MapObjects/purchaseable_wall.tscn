@@ -7,7 +7,7 @@
 size = Vector2(25, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0yuo"]
-size = Vector2(34, 66)
+size = Vector2(41, 66)
 
 [node name="PurchaseableWall" type="StaticBody2D"]
 script = ExtResource("1_tc0q1")

@@ -29,6 +29,12 @@ public partial class health_bar : ProgressBar
         }
     }
 
+    public void SetMaxHealth(int newMaxHealth)
+    {
+        MaxValue = newMaxHealth;
+        _damageBar.MaxValue = MaxValue;
+    }
+
     public void InitializeHealthBar(int entityHealth)
     {
         _health = entityHealth;
@@ -37,12 +43,7 @@ public partial class health_bar : ProgressBar
         _damageBar.MaxValue = entityHealth;
         _damageBar.Value = entityHealth;
     }
-
-    public void IncreaseMaxHealth(int newMax)
-    {
-        MaxValue = newMax;
-    }
-
+    
     private void _on_timer_timeout()
     {
         _damageBar.Value = _health;

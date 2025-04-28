@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using MartiansDutyCS.scripts.Entities;
 using MartiansDutyCS.scripts.Systems;
+using EventHandler = MartiansDutyCS.scripts.Systems.EventHandler;
 
 public partial class SpawnerSystem : Node
 {
@@ -10,7 +13,7 @@ public partial class SpawnerSystem : Node
 	private int _numEnemiesToSpawn = 0;
 	private int _numEnemiesKilled = 0;
 	private int _numEnemiesSpawned = 0;
-	private Timer _spawnTimer = new Timer();
+	private Timer _spawnTimer = new();
 	private bool _shouldSpawn = false;
 	
 	public override void _Ready()
@@ -20,17 +23,14 @@ public partial class SpawnerSystem : Node
 
 		EventHandler.GetInstance().Connect(EventHandler.SignalName.EnemyDies, 
 			new Callable(this, nameof(OnEnemyDies)));
-		
-		_spawners.Add(GetNode<Spawner>("spawner_1"));
-		_spawners.Add(GetNode<Spawner>("spawner_2"));
-		_spawners.Add(GetNode<Spawner>("spawner_3"));
-		_spawners.Add(GetNode<Spawner>("spawner_4"));
-		_spawners.Add(GetNode<Spawner>("spawner_5"));
-		_spawners.Add(GetNode<Spawner>("spawner_6"));
-		_spawners.Add(GetNode<Spawner>("spawner_7"));
-		_spawners.Add(GetNode<Spawner>("spawner_8"));
-		_spawners.Add(GetNode<Spawner>("spawner_9"));
-		_spawners.Add(GetNode<Spawner>("spawner_10"));
+
+		foreach (var spawner in GetChildren())
+		{
+			if (spawner is Spawner)
+			{
+				_spawners.Add(spawner as Spawner);
+			}
+		}
 		
 		GetTree().Root.AddChild(_spawnTimer);
 		_spawnTimer.Timeout += OnTimerTimeout;
@@ -65,7 +65,7 @@ public partial class SpawnerSystem : Node
 	public void OnStartOfRound()
 	{
 		_shouldSpawn = true;
-		_numEnemiesToSpawn = GameManager.GetInstance().GetRound() * 5;
+		_numEnemiesToSpawn = (int)Math.Round(Math.Pow(GameManager.GetInstance().GetRound(),2) * 0.50 + 6);
 		_numEnemiesKilled = 0;
 		_numEnemiesSpawned = 0;
 	}
@@ -84,15 +84,25 @@ public partial class SpawnerSystem : Node
 	{
 		if (_shouldSpawn && _numEnemiesSpawned <= _numEnemiesToSpawn)
 		{
-			if (_currentSpawner < _spawners.Count
-			    && _spawners[_currentSpawner].SectionNumber <= GameManager.GetInstance().GetSection())
+			var spawnerNodesInRange = Player.GetInstance().GetPlayerScene().SpawnArea.GetOverlappingBodies()
+				.Where(x => x.IsInGroup("Spawner"));
+
+			List<Spawner> spawnersInRange = new();
+			foreach (var spawnerNode in spawnerNodesInRange)
 			{
-				_numEnemiesSpawned++;
-				_spawners[_currentSpawner++].Spawn();
+				var spawner = spawnerNode as Spawner;
+				if (GameManager.GetInstance().GetSections().Contains(spawner.SectionNumber))
+				{
+					spawnersInRange.Add(spawner);
+				}
 			}
-			else
+			
+			if (spawnersInRange.Count() > 0)
 			{
-				_currentSpawner = 0;
+				var randomSpawer = GD.RandRange(0, spawnersInRange.Count() - 1);
+				var spawner = spawnersInRange.ToList()[randomSpawer] as Spawner;
+				spawner.Spawn();
+				_numEnemiesSpawned++;
 			}
 		}
 		else

@@ -20,7 +20,7 @@ public class RapidFire : IItem
 
     public void BuildDescription()
     {
-        _rapidFire.Description = "Increase Attack Speed";
+        _rapidFire.Description = "Greatly Increase Attack Speed";
     }
 
     public void BuildTexture()

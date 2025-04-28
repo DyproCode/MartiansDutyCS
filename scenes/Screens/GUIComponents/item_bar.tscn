@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbtqolthrd08f"]
+[gd_scene load_steps=3 format=3 uid="uid://dbtqolthrd08f"]
 
 [ext_resource type="Script" path="res://scripts/GUIComponents/ItemBar.cs" id="1_2c78t"]
+[ext_resource type="Texture2D" uid="uid://c14rj3kslgupd" path="res://assets/sprites/Terrain/healthbar.png" id="2_ai44v"]
 
 [node name="ItemBar" type="Control"]
-custom_minimum_size = Vector2(426, 20)
+custom_minimum_size = Vector2(426, 30)
 layout_mode = 3
 anchor_right = 0.666
 anchor_bottom = 0.056
@@ -11,7 +12,17 @@ offset_right = -0.23999
 offset_bottom = -0.16
 script = ExtResource("1_2c78t")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ai44v")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(426, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -22,10 +33,13 @@ grow_vertical = 2
 color = Color(0.686275, 0.686275, 0.686275, 0.490196)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(426, 20)
+custom_minimum_size = Vector2(390, 20)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -197.0
+offset_top = 5.0
+offset_right = 193.0
+offset_bottom = 25.0
 grow_horizontal = 2
-grow_vertical = 2

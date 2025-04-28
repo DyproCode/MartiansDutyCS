@@ -7,7 +7,8 @@ public enum TriggerType
 {
     Die,
     OnAcquire, 
-    OnHit
+    OnHit,
+    OnEndOfRound
 }
 
 public class Trigger

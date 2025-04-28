@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://djhh4qdja7b40"]
+[gd_scene load_steps=7 format=3 uid="uid://djhh4qdja7b40"]
 
 [ext_resource type="Script" path="res://scripts/GUIComponents/ui.cs" id="1_mfv66"]
 [ext_resource type="PackedScene" uid="uid://cf6mydmfw3dti" path="res://scenes/Screens/GUIComponents/pause_menu.tscn" id="1_wrvqq"]
 [ext_resource type="PackedScene" uid="uid://dtyn8fbydtkbi" path="res://scenes/Screens/GUIComponents/item_picker.tscn" id="3_3rgrd"]
 [ext_resource type="PackedScene" uid="uid://dbtqolthrd08f" path="res://scenes/Screens/GUIComponents/item_bar.tscn" id="4_ce8ps"]
+[ext_resource type="FontFile" uid="uid://bi6jpqyifkg6a" path="res://assets/fonts/airstrike.ttf" id="5_7x4ce"]
 [ext_resource type="PackedScene" uid="uid://8nofjjvucy8i" path="res://scenes/Screens/GUIComponents/stats_hud.tscn" id="5_v5hur"]
 
 [node name="UI" type="CanvasLayer"]
@@ -31,18 +32,36 @@ offset_right = -142.0
 offset_bottom = 0.5
 
 [node name="MoneyHBox" type="HBoxContainer" parent="."]
-offset_left = 8.0
-offset_right = 96.0
-offset_bottom = 40.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 36.0
 theme_override_constants/separation = -1
 
 [node name="MoneyTextLabel" type="Label" parent="MoneyHBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.380392, 0.780392, 0.227451, 1)
+theme_override_fonts/font = ExtResource("5_7x4ce")
+theme_override_font_sizes/font_size = 24
 text = "$"
 
 [node name="MoneyValueLabel" type="Label" parent="MoneyHBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.380392, 0.780392, 0.227451, 1)
+theme_override_fonts/font = ExtResource("5_7x4ce")
+theme_override_font_sizes/font_size = 24
 text = "NAN
+"
+
+[node name="RoundLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 312.0
+offset_right = 79.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(0.32549, 0.580392, 0.235294, 1)
+theme_override_fonts/font = ExtResource("5_7x4ce")
+theme_override_font_sizes/font_size = 40
+text = "100
 "
 
 [node name="ItemPicker" parent="." instance=ExtResource("3_3rgrd")]
@@ -51,23 +70,17 @@ anchor_left = 0.275
 anchor_top = 0.272
 anchor_right = 0.739
 anchor_bottom = 0.661
-offset_left = -4.0
-offset_top = 0.0799942
-offset_right = 0.0399475
-offset_bottom = 0.039978
+offset_left = -56.0
+offset_top = -1.92001
+offset_right = -51.9601
+offset_bottom = -1.96002
 
 [node name="ItemBar" parent="." instance=ExtResource("4_ce8ps")]
 anchor_left = 0.175
 anchor_top = 0.025
 anchor_right = 0.841
 anchor_bottom = 0.076
-offset_top = -2.0
-offset_right = 0.159973
-
-[node name="RoundLabel" type="Label" parent="."]
 offset_left = 8.0
-offset_top = 32.0
-offset_right = 48.0
-offset_bottom = 55.0
-text = "100
-"
+offset_top = -1.0
+offset_right = 8.15997
+offset_bottom = 10.64

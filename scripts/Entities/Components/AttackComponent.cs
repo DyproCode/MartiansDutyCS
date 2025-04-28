@@ -49,13 +49,14 @@ public partial class AttackComponent : Node
 
     private void _on_attack_buffer_timer_timeout()
     {
-        if (!IsInstanceValid(_area2D) || !IsInstanceValid(_target.HitArea))
+        if (!IsInstanceValid(_area2D) || !IsInstanceValid(_target))
         {
             return;
         }        
         
         if (_area2D.OverlapsArea(_target.HitArea))
         {
+            AudioManager.GetInstance().PlaySound("res://assets/sounds/goblin_yah.wav", GetTree().GetCurrentScene());
             Attack();
         }
         else

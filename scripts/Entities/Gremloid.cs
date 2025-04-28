@@ -10,50 +10,21 @@ public partial class Gremloid : BaseEnemy
 {
     //Health
     public static int MaxHealth = 100;
-    public static float Speed = 150;
-    public static int MoneyDrop = 100;
+    public static float Speed = 200;
+    public static int MoneyDrop = 50;
+    public NavigationAgent2D _navAgent;
+    public PlayerScene _player;
     
     public override void _Ready()
     {
-        this.Damage = 20;
-
-        if (GameManager.GetInstance().GetRound() >= 100)
-        {
-            MaxHealth = 2000;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 80)
-        {
-            MaxHealth = 1500;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 50)
-        {
-            MaxHealth = 1000;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 30)
-        {
-            MaxHealth = 500;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 20)
-        {
-            MaxHealth = 400;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 10)
-        {
-            MaxHealth = 300;
-        }
-        else if (GameManager.GetInstance().GetRound() >= 5)
-        {
-            MaxHealth = 200;
-        }
-        else
-        {
-            MaxHealth = 100;
-        }
-        
+        MaxHealth = 50 + GameManager.GetInstance().GetRound() * 10;
+        this.Damage = 18 + GameManager.GetInstance().GetRound() * 2;
         _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _healthComponent = GetNode<HealthComponent>("HealthComponent");
         HitArea = GetNode<Area2D>("HitArea");
+        _navAgent = GetNode<NavigationAgent2D>("NavAgent");
         _healthComponent.Initialize(MaxHealth);
+        _player = GetTree().GetNodesInGroup("Player").FirstOrDefault() as PlayerScene;
         
         Triggers.Add(
             new Trigger(TriggerType.Die,
@@ -66,21 +37,23 @@ public partial class Gremloid : BaseEnemy
 
     public override void _Process(double delta)
     {
-        var player = GetTree().GetNodesInGroup("Player").FirstOrDefault() as PlayerScene;
-
-        if (player == null)
+        
+        //For Nav
+        var dir = ToLocal(_navAgent.GetNextPathPosition()).Normalized();
+        //var dir = GlobalPosition.DirectionTo(_player.GlobalPosition);
+        if (_player == null)
         {
             return;
         }
         
-        _sprite.LookAt(player.GlobalPosition);
-        if (State == "walking" && GlobalPosition.DistanceTo(player.GlobalPosition) > 25)
+        _sprite.LookAt(_player.GlobalPosition);
+        if (State == "walking" && GlobalPosition.DistanceTo(_player.GlobalPosition) > 25)
         { 
-            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * Speed;
+            _navAgent.SetVelocity(dir * Speed);
         }
         else
         {
-            Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * -1;
+            _navAgent.SetVelocity(dir * -1);
         }
         
         SetAnimation();
@@ -108,5 +81,20 @@ public partial class Gremloid : BaseEnemy
         {
             _sprite.Animation = "attacking";
         }
+    }
+
+    private void MakePath()
+    {
+        _navAgent.TargetPosition = _player.GlobalPosition;
+    }
+    
+    private void _on_targeting_timer_timeout()
+    {
+        MakePath();
+    }
+
+    private void _on_nav_agent_velocity_computed(Vector2 velocity)
+    {
+        Velocity = velocity;
     }
 }

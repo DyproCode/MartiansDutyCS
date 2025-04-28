@@ -33,11 +33,15 @@ public partial class EventHandler : Node
     [Signal]
     public delegate void OnHitEventHandler();
     
+    [Signal]
+    public delegate void AllShrinesCompletedEventHandler();
+    
     private EventHandler()
     {
         Connect(SignalName.EnemyDies, new Callable(this, nameof(OnEnemyDies)));
         Connect(SignalName.ItemAcquire, new Callable(this, nameof(OnItemAcquire)));
         Connect(SignalName.OnHit, new Callable(this, nameof(OnOnHit)));
+        Connect(SignalName.EndOfRound, new Callable(this, nameof(OnEndOfRound)));
     }
     
     private void OnEnemyDies(BaseEnemy enemy)
@@ -81,21 +85,39 @@ public partial class EventHandler : Node
             {
                 if (trigger.TriggerType == TriggerType.OnHit)
                 {
-                    trigger.Execute();
+                    for (int i = 0; i < item.Amount; i++)
+                    {
+                        trigger.Execute();
+                    }
                 }
             }
         }
     }
-    
+
     public static EventHandler GetInstance()
     {
         if (_eventHandler == null)
         {
             _eventHandler = new EventHandler();
         }
-        
+
         return _eventHandler;
     }
-    
-    
+
+    private void OnEndOfRound()
+    {
+        foreach (var item in Player.GetInstance().GetItems())
+        {
+            foreach (var trigger in item.Triggers)
+            {
+                if (trigger.TriggerType == TriggerType.OnEndOfRound)
+                {
+                    for (int i = 0; i < item.Amount; i++)
+                    {
+                        trigger.Execute();
+                    }
+                }
+            }
+        }
+    }
 }

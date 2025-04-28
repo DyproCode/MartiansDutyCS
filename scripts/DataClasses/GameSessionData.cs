@@ -8,32 +8,36 @@ namespace MartiansDutyCS.scripts.DataClasses;
 
 public class GameSessionData
 {
-    private string _fileName = "scripts/GameFiles/GameSessionData.json";
+    private string _fileName =  Path.Combine(OS.GetUserDataDir(), "GameSessionData.json");
     [JsonProperty("items")] public List<string> Items { get; set; }
     [JsonProperty("money")] public int Money { get; set; }  
     [JsonProperty("round")] public int Round { get; set; }
     [JsonProperty("player_x")] public float PlayerX { get; set; }
     [JsonProperty("player_y")] public float PlayerY { get; set; }
+    [JsonProperty("current_section")] public int CurrentSection { get; set; }
     
     public GameSessionData() {}
 
-    public GameSessionData(List<string> items, int money, int round, float playerX, float playerY)
+    public GameSessionData(List<string> items, int money, int round, float playerX, float playerY, int currentSection)
     {
         Items = items;
         Money = money;
         Round = round;
         PlayerX = playerX;
         PlayerY = playerY;
+        CurrentSection = currentSection;
     }
     
-    public void SaveJsonData(List<string> items, int money, int round, float playerX, float playerY)
+    public void SaveJsonData(List<string> items, int money, int round, float playerX, float playerY, int currentSection)
     {
-
+        EnsureSaveFileExists();
         Items = items;
         Money = money;
         Round = round;
         PlayerX = playerX;
         PlayerY = playerY;
+        CurrentSection = currentSection;
+        
         string json = JsonConvert.SerializeObject(this);
 
         if (File.Exists(_fileName))
@@ -58,6 +62,7 @@ public class GameSessionData
             this.Round = JsonData.Round;
             this.PlayerX = JsonData.PlayerX;
             this.PlayerY = JsonData.PlayerY;
+            this.CurrentSection = JsonData.CurrentSection;
         }
         else
         {
@@ -67,11 +72,21 @@ public class GameSessionData
 
     public void ClearData()
     {
+        EnsureSaveFileExists();
         File.WriteAllText(_fileName, "");
     }
 
     public bool HasSave()
     {   
+        EnsureSaveFileExists();
         return File.ReadAllText(_fileName) != "";
+    }
+    
+    private void EnsureSaveFileExists()
+    {
+        if (!File.Exists(_fileName))
+        {
+            File.WriteAllText(_fileName, "{}");
+        }
     }
 }

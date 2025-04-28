@@ -8,7 +8,7 @@ public partial class MysteryBox : StaticBody2D
 	private Area2D _purchaseArea;
 	private Label _purchaseLabel;
 	private PlayerScene _player;
-	private int _price = 2000;
+	private int _price = 4000;
 	
 	public override void _Ready()
 	{
@@ -21,6 +21,7 @@ public partial class MysteryBox : StaticBody2D
 	{
 		if (_purchaseArea.OverlapsArea(_player.HitArea) && Input.IsActionJustPressed("INTERACT") && Player.GetInstance().Money >= _price)
 		{
+			AudioManager.GetInstance().PlaySound("res://assets/sounds/itempick.wav", GetTree().CurrentScene);
 			Player.GetInstance().Money -= _price;
 			Player.GetInstance().GivePlayerItem(ItemFactory.GetInstance().CreateXItems(1)[0]);
 		}

@@ -28,6 +28,7 @@ public partial class ItemPicker : Control
 
     public void OnItemSelected(Item selectedItem)
     {
+        AudioManager.GetInstance().PlaySound("res://assets/sounds/itempick.wav", GetTree().CurrentScene);
         Player.GetInstance().GivePlayerItem(selectedItem);
         EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.StartOfRound);
         Hide();

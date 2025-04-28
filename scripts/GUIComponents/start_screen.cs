@@ -11,6 +11,8 @@ public partial class start_screen : Control
 	{
 		_resumeButton = GetNode<Button>("MarginContainer/VBoxContainer/ResumeBtn");
 		
+		AudioManager.GetInstance().PlaySound("res://assets/sounds/MartiansStartScreen.wav", this, true);
+		
 		if (!GameManager.GetInstance().GameSessionData.HasSave())
 		{
 			_resumeButton.Disabled = true;
@@ -20,7 +22,7 @@ public partial class start_screen : Control
 	private void _on_start_btn_pressed()
 	{
 		GameManager.GetInstance().GameSessionData.ClearData();
-		GetTree().ChangeSceneToFile("res://scenes/Screens/main_game.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/Screens/map_one.tscn");
 	}
 
 	private void _on_arena_btn_pressed()
@@ -36,6 +38,6 @@ public partial class start_screen : Control
 
 	private void _on_resume_btn_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Screens/main_game.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/Screens/map_one.tscn");
 	}
 }

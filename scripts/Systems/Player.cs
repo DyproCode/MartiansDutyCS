@@ -10,7 +10,7 @@ public class Player
     public int Money = 0;
     
     public float Speed = 150;
-    public double AttackSpeed = 0.35;
+    public double AttackSpeed = 0.6;
     public int Damage = 20;
     public int MaxHealth = 100;
     public int Luck = 0;
@@ -21,6 +21,7 @@ public class Player
     private List<Item> _items = new List<Item>();
     
     private static Player _player = null;
+    private static PlayerScene _playerScene = null;
     
     private Player()
     {
@@ -31,7 +32,7 @@ public class Player
     {
          Money = 0;
          Speed = 150;
-         AttackSpeed = 0.35;
+         AttackSpeed = 0.2;
          Damage = 20;
          MaxHealth = 100;
          Luck = 0;
@@ -42,6 +43,15 @@ public class Player
          _items = new List<Item>();
     }
 
+    public void SetPlayerScene(PlayerScene playerScene)
+    {
+        _playerScene = playerScene;
+    }
+
+    public PlayerScene GetPlayerScene()
+    {
+        return _playerScene;
+    }
     public static Player GetInstance()
     {
         if (_player == null)
@@ -100,6 +110,15 @@ public class Player
         return _items.Any(i => i.ItemName == item.ItemName);
     }
 
+    public int GetItemAmount(string itemName)
+    {
+        if (_items.FirstOrDefault(i => i.ItemName == itemName) == null)
+        {
+            return 0;
+        }
+        return _items.FirstOrDefault(i => i.ItemName == itemName).Amount;
+    }
+    
     public List<Item> GetItems()
     {
         return _items;

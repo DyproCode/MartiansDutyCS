@@ -5,43 +5,43 @@ using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class GremloidHand : IItem
+public class ChoasHourGlass : IItem
 {
-    private Item _gremloidHand;
+    private Item _chaosHourGlass;
     public void BuildItem()
     {
-        _gremloidHand = new Item();
+        _chaosHourGlass = new Item();
     }
 
     public void BuildName()
     {
-        _gremloidHand.ItemName = "GremloidHand";
+        _chaosHourGlass.ItemName = "ChaosHourGlass";
     }
 
     public void BuildDescription()
     {
-        _gremloidHand.Description = "+2 Luck, slightly Increase attack speed";
+        _chaosHourGlass.Description = "-20 speed, gremloids have -20 speed";
     }
 
     public void BuildTexture()
     {
-        _gremloidHand.Texture = AssetLoader.GetInstance().ITEM_GREMLOIDHAND;
+        _chaosHourGlass.Texture = AssetLoader.GetInstance().ITEM_GALAXYHOURGLASS;
     }
 
     public void BuildTriggers()
     {
-        _gremloidHand.Triggers = new List<Trigger>
+        _chaosHourGlass.Triggers = new List<Trigger>
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreaseLuck(4),
-                new EffectIncreasePlayerFireRate(1.125)
+                new EffectDecreasePlayerSpeed(20),
+                new EffectDecreasePlayerSpeed(20),
             })
         };
     }
 
     public Item GetItem()
     {
-        return _gremloidHand;
+        return _chaosHourGlass;
     }
 }

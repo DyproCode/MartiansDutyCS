@@ -5,43 +5,43 @@ using MartiansDutyCS.scripts.Systems;
 
 namespace MartiansDutyCS.scripts.Items.ItemImplementations;
 
-public class GremloidHand : IItem
+public class GremloidEar : IItem
 {
-    private Item _gremloidHand;
+    private Item _gremloidEar;
     public void BuildItem()
     {
-        _gremloidHand = new Item();
+        _gremloidEar = new Item();
     }
 
     public void BuildName()
     {
-        _gremloidHand.ItemName = "GremloidHand";
+        _gremloidEar.ItemName = "GremloidEar";
     }
 
     public void BuildDescription()
     {
-        _gremloidHand.Description = "+2 Luck, slightly Increase attack speed";
+        _gremloidEar.Description = "-2 luck, +50% crit damage";
     }
 
     public void BuildTexture()
     {
-        _gremloidHand.Texture = AssetLoader.GetInstance().ITEM_GREMLOIDHAND;
+        _gremloidEar.Texture = AssetLoader.GetInstance().ITEM_GREMLOIDEAR;
     }
 
     public void BuildTriggers()
     {
-        _gremloidHand.Triggers = new List<Trigger>
+        _gremloidEar.Triggers = new List<Trigger>
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreaseLuck(4),
-                new EffectIncreasePlayerFireRate(1.125)
+                new EffectDescreasePlayerLuck(2),
+                new EffectIncreaseCritDamage(50)
             })
         };
     }
 
     public Item GetItem()
     {
-        return _gremloidHand;
+        return _gremloidEar;
     }
 }

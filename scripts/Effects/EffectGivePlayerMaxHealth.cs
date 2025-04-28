@@ -17,5 +17,6 @@ public class EffectGivePlayerMaxHealth : IEffect
         Player.GetInstance().MaxHealth += _healthIncrease;
         Player.GetInstance().CurrentHealth += _healthIncrease;
         EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.OnPlayerMaxHealthIncrease);
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.OnPlayerHeal);
     }
 }

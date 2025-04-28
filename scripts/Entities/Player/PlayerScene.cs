@@ -25,6 +25,7 @@ public partial class PlayerScene : CharacterBody2D
 	public Timer _rollTimer;
 	private health_bar _healthBar;
 	public Area2D HitArea;
+	public Area2D SpawnArea;
 	
 	//PackedScenes
 	private PackedScene _bulletPackedScene = (PackedScene)GD.Load("res://scenes/Entities/Projectiles/bullet.tscn"); 
@@ -37,6 +38,7 @@ public partial class PlayerScene : CharacterBody2D
 		_rollTimer = GetNode<Timer>("RollTimer");
 		_fireMarker = GetNode<Marker2D>("FireMarker");
 		_healthBar = GetNode<health_bar>("HealthBar");
+		SpawnArea = GetNode<Area2D>("SpawnArea");
 		Camera2D = GetNode<Camera2D>("Camera2D");
 		
 		HitArea = GetNode<Area2D>("HitArea");
@@ -59,6 +61,8 @@ public partial class PlayerScene : CharacterBody2D
 			.Connect(EventHandler.SignalName.StartOfRound, new Callable(this, nameof(OnStartOfRound)));
 		
 		State = _idleState;
+		
+		Player.GetInstance().SetPlayerScene(this);
 	}
 
 	public override void _Process(double delta)
@@ -68,11 +72,13 @@ public partial class PlayerScene : CharacterBody2D
 			_fireRate.SetWaitTime(Player.GetInstance().AttackSpeed);
 		}
 		
+		
 		_sprite.Rotation = GetLocalMousePosition().Angle();
-		_fireMarker.GlobalPosition = new Vector2((float)(GlobalPosition.X + Math.Cos(_sprite.Rotation + Math.PI / 20) * 40),
-			(float)(GlobalPosition.Y + Math.Sin(_sprite.Rotation + Math.PI / 20) * 40));
+		_fireMarker.GlobalPosition = new Vector2((float)(GlobalPosition.X + Math.Cos(_sprite.Rotation + Math.PI / 20) * 30),
+			(float)(GlobalPosition.Y + Math.Sin(_sprite.Rotation + Math.PI / 20) * 30));
 		
 		State.PhysicsUpdate();
+		State.Update();
 		
 		MoveAndSlide();
 	}
@@ -93,15 +99,17 @@ public partial class PlayerScene : CharacterBody2D
 			
 			newBullet.Initialize("Enemy", damage, _sprite.Rotation, _fireMarker.GlobalPosition);
 			
-			GetParent().AddChild(newBullet);
+			GetTree().GetCurrentScene().AddChild(newBullet);
 			_canShoot = false;
 			_fireRate.Start();
+			AudioManager.GetInstance().PlaySound("res://assets/sounds/Laser_Shoot.wav", this, volume: -9);
 		}
 	}
 
 	public void TakeDamage(int damage)
 	{
-		Player.GetInstance().CurrentHealth -= damage;
+		var damageToPlayer = damage - Player.GetInstance().Armour > 0 ? damage - Player.GetInstance().Armour : 0;
+		Player.GetInstance().CurrentHealth -= damageToPlayer;
 		_healthBar.SetHealth(Player.GetInstance().CurrentHealth);
 		if (Player.GetInstance().CurrentHealth <= 0)
 		{
@@ -144,8 +152,7 @@ public partial class PlayerScene : CharacterBody2D
 	//Fix this
 	private void OnMaxHealthIncrease()
 	{
-		_healthBar.SetMax(Player.GetInstance().MaxHealth);
-		_healthBar._damageBar.SetMax(Player.GetInstance().MaxHealth);
+		_healthBar.SetMaxHealth(Player.GetInstance().MaxHealth);
 	}
 
 	private void OnHeal()
@@ -155,6 +162,6 @@ public partial class PlayerScene : CharacterBody2D
 
 	private void OnStartOfRound()
 	{
-		GameManager.GetInstance().GameSessionData.SaveJsonData(Player.GetInstance().GetItemNames(), Player.GetInstance().Money, GameManager.GetInstance().GetRound(), GlobalPosition.X, GlobalPosition.Y);
+		//GameManager.GetInstance().GameSessionData.SaveJsonData(Player.GetInstance().GetItemNames(), Player.GetInstance().Money, GameManager.GetInstance().GetRound(), GlobalPosition.X, GlobalPosition.Y, GameManager.GetInstance().GetSections());
 	}
 }

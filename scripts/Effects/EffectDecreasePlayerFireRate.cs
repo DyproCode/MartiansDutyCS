@@ -13,6 +13,6 @@ public class EffectDecreasePlayerFireRate : IEffect
     
     public void Execute()
     {
-        Player.GetInstance().AttackSpeed += _fireRateDecrease;
+        Player.GetInstance().AttackSpeed *= _fireRateDecrease;
     }
 }

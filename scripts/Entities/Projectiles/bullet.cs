@@ -17,14 +17,17 @@ public partial class bullet : Area2D
     {
         _target_group = targetGroup;
         _damage = damage;
-        Position = pos;
+        GlobalPosition = pos;
         Rotation = angle;
     }
-
+    
     public override void _Ready()
     {
         _pierce = Player.GetInstance().Pierce;
+        
     }
+    
+    
 
     public override void _PhysicsProcess(double delta)
     {
@@ -32,25 +35,26 @@ public partial class bullet : Area2D
 
         GlobalPosition += dir * BULLET_SPEED * (float)delta;
         _distanceTraveled += BULLET_SPEED * (float)delta;
-
+        
         if (_distanceTraveled > MAX_RANGE)
         {
             QueueFree();
         }
     }
     
-    
     //Probably the reason that can't hit close gremloid. on_area_entered probably doesn't trigger if the thing spawns inside the area
-    private void _on_area_entered(Area2D area2D)
+    private void _on_body_entered(Node2D enemy)
     {
-        if (area2D.GetParent() is BaseEnemy)
+        if (enemy is BaseEnemy)
         {
-            var parent = area2D.GetParent() as BaseEnemy;
-            
-            if (parent.FindChild("HealthComponent") != null)
+            if (enemy.FindChild("HealthComponent") != null)
             {
-                parent.FindChild("HealthComponent").Call("TakeDamage", _damage);
+                enemy.FindChild("HealthComponent").Call("TakeDamage", _damage);
             }
+        }
+        else
+        {
+            QueueFree();
         }
         
         if (_pierce <= 0)

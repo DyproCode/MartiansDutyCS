@@ -21,5 +21,6 @@ public class EffectHealPlayer : IEffect
         {
             Player.GetInstance().CurrentHealth += _healAmount;
         }
+        EventHandler.GetInstance().EmitSignal(EventHandler.SignalName.OnPlayerHeal);
     }
 }

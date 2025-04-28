@@ -20,7 +20,7 @@ public class GremloidSkull : IItem
 
     public void BuildDescription()
     {
-        _gremloidSkull.Description = "Significantly Decrease Attack Speed, +4 Attack";
+        _gremloidSkull.Description = "Significantly Decrease Attack Speed, +20 Attack";
     }
 
     public void BuildTexture()
@@ -34,8 +34,8 @@ public class GremloidSkull : IItem
         {
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
-                new EffectIncreasePlayerAttack(40),
-                new EffectDecreasePlayerFireRate(0.25)
+                new EffectIncreasePlayerAttack(20),
+                new EffectDecreasePlayerFireRate(1.50)
             })
         };
     }

@@ -8,6 +8,7 @@ public partial class PurchaseableWall : StaticBody2D
 	private PlayerScene _player;
 	private Label _purchaseLabel;
 	[Export] public int Price = 0;
+	[Export] public int Section;
 	
 	public override void _Ready()
 	{
@@ -20,11 +21,19 @@ public partial class PurchaseableWall : StaticBody2D
 	
 	public override void _Process(double delta)
 	{
-		if (_purchaseArea.OverlapsArea(_player.HitArea) && Input.IsActionJustPressed("INTERACT") && Player.GetInstance().Money >= Price)
+		if (_purchaseArea.OverlapsArea(_player.HitArea) && Input.IsActionJustPressed("INTERACT"))
 		{
-			Player.GetInstance().Money -= Price;
-			GameManager.GetInstance().IncreaseSection();
-			QueueFree();
+			if (Player.GetInstance().Money >= Price)
+			{
+				Player.GetInstance().Money -= Price;
+				GameManager.GetInstance().UnlockSection(Section);
+				AudioManager.GetInstance().PlaySound("res://assets/sounds/purchase.wav", GetTree().CurrentScene);
+				QueueFree();
+			}
+			else
+			{
+				AudioManager.GetInstance().PlaySound("res://assets/sounds/unPurchaseable.wav", GetTree().CurrentScene);
+			}
 		}
 
 		if (_purchaseArea.OverlapsArea(_player.HitArea))

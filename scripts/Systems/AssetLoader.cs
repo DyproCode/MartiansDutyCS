@@ -27,6 +27,8 @@ public class AssetLoader
     public Texture2D ITEM_SYRINGECLAMP;
     public Texture2D ITEM_TENTACLESIGNET;
     public Texture2D ITEM_VAMPROUNDS;
+    public Texture2D ITEM_CLOVER;
+    public Texture2D ITEM_GOLDENCLOVER;
     
     private AssetLoader()
     {
@@ -50,6 +52,9 @@ public class AssetLoader
         ITEM_SYRINGECLAMP = (Texture2D)GD.Load("res://assets/sprites/Item Icons/MD_SyringeClamp.png");
         ITEM_TENTACLESIGNET = (Texture2D)GD.Load("res://assets/sprites/Item Icons/MD_TentacleSignet.png");
         ITEM_VAMPROUNDS = (Texture2D)GD.Load("res://assets/sprites/Item Icons/MD_VampRoundsWIP.png");
+        ITEM_CLOVER = (Texture2D)GD.Load("res://assets/sprites/Item Icons/MD_Clover.png");
+        ITEM_GOLDENCLOVER = (Texture2D)GD.Load("res://assets/sprites/Item Icons/MD_GoldenClover.png");
+
     }
 
     public static AssetLoader GetInstance()

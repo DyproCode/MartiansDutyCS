@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cyre77ux36jsf"]
+[gd_scene load_steps=35 format=3 uid="uid://cyre77ux36jsf"]
 
 [ext_resource type="Script" path="res://scripts/Entities/Player/PlayerScene.cs" id="1_owfql"]
 [ext_resource type="PackedScene" uid="uid://1uvl32hnjnnx" path="res://scenes/Entities/Components/health_bar.tscn" id="2_2ycl4"]
@@ -181,6 +181,9 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_27c18"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpcd7"]
+radius = 489.001
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 script = ExtResource("1_owfql")
@@ -199,7 +202,7 @@ wait_time = 0.35
 one_shot = true
 
 [node name="FireMarker" type="Marker2D" parent="."]
-position = Vector2(9, 4)
+position = Vector2(5, 4)
 
 [node name="RollTimer" type="Timer" parent="."]
 one_shot = true
@@ -231,6 +234,13 @@ debug_color = Color(0.966904, 0, 0.477621, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.25, 1.25)
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_lpcd7")
+debug_color = Color(0.332492, 0.622795, 0, 0.42)
 
 [connection signal="timeout" from="FireRate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
