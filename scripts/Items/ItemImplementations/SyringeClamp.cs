@@ -15,7 +15,7 @@ public class SyringeClamp : IItem
 
     public void BuildName()
     {
-        _syringeClamp.ItemName = "SyringeClamp";
+        _syringeClamp.ItemName = "Syringe Clamp";
     }
 
     public void BuildDescription()

@@ -15,7 +15,7 @@ public class GremloidSkull : IItem
 
     public void BuildName()
     {
-        _gremloidSkull.ItemName = "GremloidSkull";
+        _gremloidSkull.ItemName = "Gremloid Skull";
     }
 
     public void BuildDescription()

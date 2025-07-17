@@ -14,7 +14,7 @@ public class HoloWatch : IItem
 
     public void BuildName()
     {
-        _holoWatch.ItemName = "HoloWatch";
+        _holoWatch.ItemName = "Holo Watch";
     }
 
     public void BuildDescription()

@@ -14,7 +14,7 @@ public class InterestOrb : IItem
 
     public void BuildName()
     {
-        _interestOrb.ItemName = "InterestOrb";
+        _interestOrb.ItemName = "Interest Orb";
     }
 
     public void BuildDescription()

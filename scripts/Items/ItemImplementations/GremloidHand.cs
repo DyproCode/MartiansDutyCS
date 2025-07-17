@@ -15,7 +15,7 @@ public class GremloidHand : IItem
 
     public void BuildName()
     {
-        _gremloidHand.ItemName = "GremloidHand";
+        _gremloidHand.ItemName = "Gremloid Hand";
     }
 
     public void BuildDescription()

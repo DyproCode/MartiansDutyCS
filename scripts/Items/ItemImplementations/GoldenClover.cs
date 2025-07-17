@@ -15,7 +15,7 @@ public class GoldenClover : IItem
 
     public void BuildName()
     {
-        _goldenClover.ItemName = "GoldenClover";
+        _goldenClover.ItemName = "Golden Clover";
     }
 
     public void BuildDescription()

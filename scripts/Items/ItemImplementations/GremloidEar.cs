@@ -15,7 +15,7 @@ public class GremloidEar : IItem
 
     public void BuildName()
     {
-        _gremloidEar.ItemName = "GremloidEar";
+        _gremloidEar.ItemName = "Gremloid Ear";
     }
 
     public void BuildDescription()

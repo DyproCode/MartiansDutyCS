@@ -4,13 +4,16 @@ public class EffectDecreaseGremloidSpeed : IEffect
 {
     private int _speedToDecrease = 0;
 
-    EffectDecreaseGremloidSpeed(int speed)
+    public EffectDecreaseGremloidSpeed(int speed)
     {
         _speedToDecrease = speed;
     }
     
     public void Execute()
     {
-        Gremloid.Speed -= _speedToDecrease;
+        if (Gremloid.Speed > 100)
+        {
+            Gremloid.Speed -= _speedToDecrease;
+        }
     }
 }

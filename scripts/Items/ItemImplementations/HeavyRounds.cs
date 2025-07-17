@@ -15,7 +15,7 @@ public class HeavyRounds : IItem
 
     public void BuildName()
     {
-        _heavyRounds.ItemName = "HeavyRounds";
+        _heavyRounds.ItemName = "Heavy Rounds";
     }
 
     public void BuildDescription()

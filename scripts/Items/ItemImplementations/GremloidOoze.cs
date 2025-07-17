@@ -15,7 +15,7 @@ public class GremloidOoze : IItem
 
     public void BuildName()
     {
-        _gremloidOoze.ItemName = "GremloidOoze";
+        _gremloidOoze.ItemName = "Gremloid Ooze";
     }
 
     public void BuildDescription()

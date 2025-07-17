@@ -14,7 +14,7 @@ public class BrainInAJar : IItem
 
     public void BuildName()
     {
-        _brainInAJar.ItemName = "BrainInAJar";
+        _brainInAJar.ItemName = "Brain In A Jar";
     }
 
     public void BuildDescription()

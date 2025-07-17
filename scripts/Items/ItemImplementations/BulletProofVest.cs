@@ -15,7 +15,7 @@ public class BulletProofVest : IItem
 
     public void BuildName()
     {
-        _bulletProofVest.ItemName = "BulletProofVest";
+        _bulletProofVest.ItemName = "Bullet Proof Vest";
     }
 
     public void BuildDescription()

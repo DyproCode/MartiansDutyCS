@@ -16,23 +16,23 @@ public class ItemFactory
     {
         _itemNames = new List<string>
         {
-          "SyringeClamp",
-          "BulletProofVest",
-          "LocalCurrency",
-          "RapidFire",
-          "GremloidSkull",
-          "GremloidFoot",
-          "LaserAttachment",
-          "VampRounds",
-          "GremloidHand",
-          "HoloWatch",
+          "Syringe Clamp",
+          "Bullet Proof Vest",
+          "Local Currency",
+          "Rapid Fire",
+          "Gremloid Skull",
+          "Gremloid Foot",
+          "Laser Attachment",
+          "Vamp Rounds",
+          "Gremloid Hand",
+          "Holo Watch",
           "Gremloidium",
-          "InterestOrb",
-          "GremloidOoze",
-          "HeavyRounds",
-          "HardenedGremloidium",
-          "GremloidEar",
-          "FourLeafClover"
+          "Interest Orb",
+          "Gremloid Ooze",
+          "Heavy Rounds",
+          "Hardened Gremloidium",
+          "Gremloid Ear",
+          "Four Leaf Clover"
         };
 
         _choasItemNames = new List<string>
@@ -54,43 +54,43 @@ public class ItemFactory
     
     public Item CreateSpecificItem(string itemName)
     {
-        if (itemName == "SyringeClamp")
+        if (itemName == "Syringe Clamp")
         {
             return _itemDirector.BuildItem(new SyringeClamp());
         }
-        else if (itemName == "BulletProofVest")
+        else if (itemName == "Bullet Proof Vest")
         {
             return _itemDirector.BuildItem(new BulletProofVest());
         }
-        else if (itemName == "LocalCurrency")
+        else if (itemName == "Local Currency")
         {
             return _itemDirector.BuildItem(new LocalCurrency());
         }
-        else if (itemName == "RapidFire")
+        else if (itemName == "Rapid Fire")
         {
             return _itemDirector.BuildItem(new RapidFire());
         }
-        else if (itemName == "GremloidSkull")
+        else if (itemName == "Gremloid Skull")
         {
             return _itemDirector.BuildItem(new GremloidSkull());
         }
-        else if (itemName == "GremloidFoot")
+        else if (itemName == "Gremloid Foot")
         {
             return _itemDirector.BuildItem(new GremloidFoot());
         }
-        else if (itemName == "LaserAttachment")
+        else if (itemName == "Laser Attachment")
         {
             return _itemDirector.BuildItem(new LaserAttachment());
         }
-        else if (itemName == "VampRounds")
+        else if (itemName == "Vamp Rounds")
         {
             return _itemDirector.BuildItem(new VampRounds());
         }
-        else if (itemName == "GremloidHand")
+        else if (itemName == "Gremloid Hand")
         {
             return _itemDirector.BuildItem(new GremloidHand());
         }
-        else if (itemName == "HoloWatch")
+        else if (itemName == "Holo Watch")
         {
             return _itemDirector.BuildItem(new HoloWatch());
         }
@@ -98,35 +98,35 @@ public class ItemFactory
         {
             return _itemDirector.BuildItem(new Gremloidium());
         }
-        else if (itemName == "InterestOrb")
+        else if (itemName == "Interest Orb")
         {
             return _itemDirector.BuildItem(new InterestOrb());
         }
-        else if (itemName == "GremloidOoze")
+        else if (itemName == "Gremloid Ooze")
         {
             return _itemDirector.BuildItem(new GremloidOoze());
         }
-        else if (itemName == "HeavyRounds")
+        else if (itemName == "Heavy Rounds")
         {
             return _itemDirector.BuildItem(new HeavyRounds());
         }
-        else if (itemName == "HardenedGremloidium")
+        else if (itemName == "Hardened Gremloidium")
         {
             return _itemDirector.BuildItem(new HardenedGremloidium());
         }
-        else if (itemName == "GremloidEar")
+        else if (itemName == "Gremloid Ear")
         {
             return _itemDirector.BuildItem(new GremloidEar());
         }
-        else if (itemName == "FourLeafClover")
+        else if (itemName == "Four Leaf Clover")
         {
             return _itemDirector.BuildItem(new FourLeafClover());
         }
-        else if (itemName == "GoldenClover")
+        else if (itemName == "Golden Clover")
         {
             return _itemDirector.BuildItem(new GoldenClover());
         }
-        else if (itemName == "ChoasHourGlass")
+        else if (itemName == "Chaos Hour Glass")
         {
             return _itemDirector.BuildItem(new ChoasHourGlass());
         }

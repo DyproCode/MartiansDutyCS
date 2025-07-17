@@ -15,7 +15,7 @@ public class VampRounds : IItem
 
     public void BuildName()
     {
-        _vampRounds.ItemName = "VampRounds";
+        _vampRounds.ItemName = "Vamp Rounds";
     }
 
     public void BuildDescription()

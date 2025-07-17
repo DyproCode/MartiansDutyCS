@@ -15,7 +15,7 @@ public class ChoasHourGlass : IItem
 
     public void BuildName()
     {
-        _chaosHourGlass.ItemName = "ChaosHourGlass";
+        _chaosHourGlass.ItemName = "Chaos Hour Glass";
     }
 
     public void BuildDescription()
@@ -35,7 +35,7 @@ public class ChoasHourGlass : IItem
             new Trigger(TriggerType.OnAcquire, new List<IEffect>
             {
                 new EffectDecreasePlayerSpeed(20),
-                new EffectDecreasePlayerSpeed(20),
+                new EffectDecreaseGremloidSpeed(20),
             })
         };
     }

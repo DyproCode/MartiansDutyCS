@@ -15,7 +15,7 @@ public class HardenedGremloidium : IItem
 
     public void BuildName()
     {
-        _hardenedGremloidium.ItemName = "HardenedGremloidium";
+        _hardenedGremloidium.ItemName = "Hardened Gremloidium";
     }
 
     public void BuildDescription()

@@ -15,7 +15,7 @@ public class LocalCurrency : IItem
 
     public void BuildName()
     {
-        _localCurrency.ItemName = "LocalCurrency";
+        _localCurrency.ItemName = "Local Currency";
     }
 
     public void BuildDescription()

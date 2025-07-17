@@ -15,7 +15,7 @@ public class FourLeafClover : IItem
 
     public void BuildName()
     {
-        _fourLeafClover.ItemName = "FourLeafClover";
+        _fourLeafClover.ItemName = "Four Leaf Clover";
     }
 
     public void BuildDescription()

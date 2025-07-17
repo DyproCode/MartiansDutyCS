@@ -18,6 +18,8 @@ public partial class GremloidBoss : BaseEnemy
     public Area2D _rightSwipeRange;
     public Area2D _slapRange;
     
+    public NavigationAgent2D _navigationAgent;
+    
     public override void _Ready()
     {
         this.Damage = 40;
@@ -28,6 +30,7 @@ public partial class GremloidBoss : BaseEnemy
         _leftSwipeRange = GetNode<Area2D>("LeftSideSwipeRange");
         _rightSwipeRange = GetNode<Area2D>("RightSideSwipeRange");
         _slapRange = GetNode<Area2D>("SlapRange");
+        _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         
         _healthComponent.Initialize(MaxHealth);
         

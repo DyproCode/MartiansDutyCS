@@ -15,7 +15,7 @@ public class RapidFire : IItem
 
     public void BuildName()
     {
-        _rapidFire.ItemName = "RapidFire";
+        _rapidFire.ItemName = "Rapid Fire";
     }
 
     public void BuildDescription()
